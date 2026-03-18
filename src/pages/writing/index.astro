@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<BaseLayout title="Writing">
+  <div class="max-w-5xl mx-auto px-6 py-16 md:py-24">
+    <!-- Header -->
+    <header class="mb-12">
+      <p class="typewriter text-xs text-driftwood uppercase tracking-[0.2em] mb-3">Blog</p>
+      <h1 class="font-display font-black text-espresso text-3xl md:text-4xl mb-4">
+        From the Shelf
+      </h1>
+      <div class="w-24 h-1 bg-rust"></div>
+    </header>
+
+    <!-- Posts -->
+    <div class="space-y-8">
+      {posts.map((post) => {
+        const dateStr = new Date(post.data.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+        return (
+          <a href={`${base}writing/${post.id}/`} class="block group">
+            <article class="bg-parchment organic-radius paper-inset p-6 md:p-8 card-lift md:flex md:gap-8">
+              {/* Image */}
+              {post.data.heroImage && (
+                <div class="md:w-48 flex-shrink-0 mb-4 md:mb-0">
+                  <div class="frame-photo organic-radius-alt overflow-hidden">
+                    <img src={post.data.heroImage} alt="" class="w-full aspect-video md:aspect-square object-cover photo-grain" />
+                  </div>
+                </div>
+              )}
+              <div class="flex-1">
+                {/* Date */}
+                <p class="typewriter text-xs text-driftwood mb-2 tracking-wider">{dateStr}</p>
+
+                {/* Tags */}
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5 mb-3">
+                    {post.data.tags.map((tag: string) => (
+                      <span class="text-[0.65rem] font-heading uppercase tracking-wider border border-rust/50 text-rust px-1.5 py-0.5 rounded-sm">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Title */}
+                <h2 class="font-heading font-semibold text-espresso text-xl mb-3 group-hover:text-rust transition-colors leading-snug">
+                  {post.data.title}
+                </h2>
+
+                {/* Excerpt */}
+                <p class="font-body text-sm text-driftwood leading-relaxed">
+                  {post.data.excerpt}
+                </p>
+              </div>
+            </article>
+          </a>
+        );
+      })}
+    </div>
+
+    {posts.length === 0 && (
+      <p class="font-body text-driftwood italic text-center py-12">Nothing here yet. Check back soon.</p>
+    )}
+  </div>
+</BaseLayout>

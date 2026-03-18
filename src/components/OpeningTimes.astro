@@ -1,0 +1,57 @@
+---
+import siteConfig from '../../site-config.json';
+---
+
+<section class="py-16 md:py-20 bg-charcoal text-cream relative">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="md:flex md:gap-16 md:items-start">
+      <!-- Left: Address & Contact -->
+      <div class="md:w-1/2 mb-10 md:mb-0">
+        <h2 class="font-display font-black text-cream text-2xl md:text-3xl mb-6">
+          {siteConfig.name}
+        </h2>
+        <div class="space-y-3 typewriter text-sm">
+          <!-- PLACEHOLDER: Replace with real address -->
+          <p class="text-cream/80">{siteConfig.address}</p>
+          <a href={`mailto:${siteConfig.email}`} class="block text-cream/70 hover:text-mustard transition-colors">
+            {siteConfig.email}
+          </a>
+          <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, '')}`} class="block text-cream/70 hover:text-mustard transition-colors">
+            {siteConfig.phone}
+          </a>
+        </div>
+
+        <!-- Social links -->
+        <div class="flex gap-4 mt-6">
+          {siteConfig.socials.mastodon && (
+            <a href={siteConfig.socials.mastodon} target="_blank" rel="noopener noreferrer me" class="text-cream/50 hover:text-mustard transition-colors typewriter text-xs uppercase tracking-wider">
+              Mastodon
+            </a>
+          )}
+          {siteConfig.socials.instagram && (
+            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/50 hover:text-mustard transition-colors typewriter text-xs uppercase tracking-wider">
+              Instagram
+            </a>
+          )}
+        </div>
+      </div>
+
+      <!-- Right: Hours Grid -->
+      <div class="md:w-1/2">
+        <h3 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/60 mb-4">
+          Opening Hours
+        </h3>
+        <div class="space-y-2">
+          {siteConfig.hours.map((h: any) => (
+            <div class="flex justify-between typewriter text-sm border-b border-cream/10 pb-2">
+              <span class="text-cream/70">{h.day}</span>
+              <span class={h.status === 'open' ? 'text-cream' : 'text-cream/30'}>
+                {h.status === 'open' ? h.hours : 'Closed'}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

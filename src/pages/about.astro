@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import siteConfig from '../../site-config.json';
+---
+
+<BaseLayout title="About">
+  <div class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+
+    <!-- Header -->
+    <header class="mb-16">
+      <p class="typewriter text-xs text-driftwood uppercase tracking-[0.2em] mb-3">About</p>
+      <h1 class="font-display font-black text-espresso leading-tight mb-6" style="font-size: clamp(2.5rem, 5vw, 4rem);">
+        <!-- PLACEHOLDER: Replace with real headline -->
+        Our Story
+      </h1>
+      <div class="w-24 h-1 bg-rust"></div>
+    </header>
+
+    <!-- Our Story -->
+    <section class="prose-dropcap mb-20">
+      <div class="font-body text-driftwood leading-relaxed space-y-6 text-base">
+        <!-- PLACEHOLDER: Replace all paragraphs below -->
+        <p>
+          We opened our doors in 2019 in a small storefront on a quiet corner, with two bookshelves, a kettle, and a conviction that a city without an independent radical bookstore is a city missing a vital organ.
+        </p>
+        <p>
+          Since then, we've grown into a community hub: a place to find the books that schools don't teach, to gather for reading groups and workshops, to organize around housing, labor, and mutual aid, and to simply sit with a cup of tea and think.
+        </p>
+        <p>
+          We're worker-owned and collectively run. No bosses, no investors, no venture capital. We pay our rent through book sales, event donations, and the extraordinary generosity of our community. Every decision is made together, by the people who keep the lights on and the shelves stocked.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Space -->
+    <section class="mb-20">
+      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-8">The Space</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- PLACEHOLDER: Replace with real photos -->
+        <div class="frame-photo organic-radius overflow-hidden bg-bone aspect-[4/3]" style="transform: rotate(-0.8deg);">
+          <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-bone to-driftwood/15 photo-grain">
+            <span class="typewriter text-driftwood/40 text-sm">[ interior photo ]</span>
+          </div>
+        </div>
+        <div class="frame-photo organic-radius-alt overflow-hidden bg-bone aspect-[4/3]" style="transform: rotate(0.5deg);">
+          <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-bone to-driftwood/15 photo-grain">
+            <span class="typewriter text-driftwood/40 text-sm">[ shelves photo ]</span>
+          </div>
+        </div>
+      </div>
+      <div class="font-body text-driftwood leading-relaxed space-y-4 text-base">
+        <!-- PLACEHOLDER: Replace with real description -->
+        <p>
+          The main floor holds our curated collection: radical theory, labor history, feminism, anti-racism, ecology, poetry, fiction, children's books, and a rotating selection of zines from local makers.
+        </p>
+        <p>
+          The back room is our gathering space — a flexible room for reading groups, workshops, film screenings, and community meetings. It seats about 30 and comes equipped with a projector, a sound system, and an industrial-strength kettle.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Collective -->
+    <section class="mb-20">
+      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-8">The Collective</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- PLACEHOLDER: Replace with real team members -->
+        {[
+          { name: 'Alex R.', role: 'Books & Ordering', bio: 'Reads too much theory, not enough fiction. Favorite shelf: labor history.' },
+          { name: 'Sam K.', role: 'Events & Outreach', bio: 'Believes every event should end with tea and a plan. Organizer at heart.' },
+          { name: 'Jordan M.', role: 'Space & Operations', bio: 'Keeps the lights on and the shelves organized. Zine enthusiast.' },
+        ].map(member => (
+          <div class="bg-parchment organic-radius paper-inset p-6">
+            <div class="w-16 h-16 rounded-full bg-bone border-2 border-driftwood/20 mb-4 flex items-center justify-center" style="transform: rotate(-1deg);">
+              <span class="font-display font-black text-driftwood/30 text-xl">{member.name[0]}</span>
+            </div>
+            <h3 class="font-heading font-semibold text-espresso text-lg">{member.name}</h3>
+            <p class="typewriter text-xs text-rust mb-2">{member.role}</p>
+            <p class="font-body text-sm text-driftwood leading-relaxed">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Get Involved -->
+    <section class="bg-bone organic-radius-alt paper-inset p-8 md:p-12">
+      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-6">Get Involved</h2>
+      <div class="font-body text-driftwood leading-relaxed space-y-4 text-base">
+        <!-- PLACEHOLDER: Replace with real information -->
+        <p>
+          We're always looking for people who want to contribute to the project. There are many ways to get involved:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong class="text-espresso">Volunteer</strong> — help with events, shelving, or the newsletter</li>
+          <li><strong class="text-espresso">Donate</strong> — every contribution keeps the lights on</li>
+          <li><strong class="text-espresso">Propose an event</strong> — the back room is open for community use</li>
+          <li><strong class="text-espresso">Spread the word</strong> — tell your friends, your neighbors, your coworkers</li>
+        </ul>
+        <p>
+          Drop by the shop or email us at <a href={`mailto:${siteConfig.email}`} class="text-rust underline underline-offset-2">{siteConfig.email}</a>.
+        </p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

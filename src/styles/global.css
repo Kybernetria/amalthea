@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #F5F0E8;
+  --bone: #EBE5DB;
+  --espresso: #2A2520;
+  --driftwood: #6B625A;
+  --rust: #B84C2E;
+  --mustard: #D4A24C;
+  --sage: #5A7A5A;
+  --charcoal: #3A3632;
+  --parchment: #FAF8F3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--espresso);
+  font-family: 'Libre Baskerville', serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+/* Paper texture background */
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/amalthea/paper-texture.png');
+  background-size: 600px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+/* Grain overlay */
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('/amalthea/grain-overlay.svg');
+  background-size: 300px;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Photo frame effect */
+.frame-photo {
+  border: 2px solid var(--driftwood);
+  box-shadow:
+    inset 0 0 20px rgba(42, 37, 32, 0.05),
+    3px 3px 8px rgba(42, 37, 32, 0.15);
+  transform: rotate(-0.3deg);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.frame-photo:hover {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow:
+    inset 0 0 20px rgba(42, 37, 32, 0.05),
+    3px 6px 16px rgba(42, 37, 32, 0.2);
+}
+
+/* Typewriter class */
+.typewriter {
+  font-family: 'Special Elite', 'Courier Prime', monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Corner fold effect */
+.corner-fold {
+  position: relative;
+}
+
+.corner-fold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(225deg, var(--bone) 50%, rgba(42,37,32,0.08) 50%);
+  border-radius: 0 0 0 4px;
+}
+
+/* Link hover animation */
+.link-slide {
+  position: relative;
+  text-decoration: none;
+  color: var(--rust);
+}
+
+.link-slide::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--rust);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.link-slide:hover::after {
+  width: 100%;
+}
+
+/* Card hover */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(184, 76, 46, 0.12);
+}
+
+/* Button fill hover */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-fill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--rust);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.btn-fill:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-fill:hover {
+  color: var(--parchment);
+}
+
+/* Organic border radius helper */
+.organic-radius {
+  border-radius: 4px 12px 10px 16px;
+}
+
+.organic-radius-alt {
+  border-radius: 12px 4px 16px 10px;
+}
+
+/* Prose drop caps */
+.prose-dropcap > p:first-of-type::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 3.5em;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.1em;
+  margin-top: 0.1em;
+  color: var(--rust);
+}
+
+/* Photo grain filter */
+.photo-grain {
+  filter: contrast(1.05) saturate(0.9);
+}
+
+/* Inset paper shadow */
+.paper-inset {
+  box-shadow: inset 0 0 40px rgba(42, 37, 32, 0.05);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--driftwood);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--espresso);
+}
+
+/* Mobile nav overlay */
+.nav-overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Event type colors */
+.event-type-reading { background-color: var(--rust); }
+.event-type-workshop { background-color: var(--sage); }
+.event-type-discussion { background-color: var(--mustard); }
+.event-type-film { background-color: var(--charcoal); }
+.event-type-meeting { background-color: var(--driftwood); }
+.event-type-other { background-color: var(--espresso); }
+
+/* Calendar grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background-color: var(--driftwood);
+  border: 1px solid var(--driftwood);
+}
+
+.calendar-cell {
+  background-color: var(--parchment);
+  min-height: 100px;
+  padding: 0.5rem;
+}
+
+.calendar-cell.today {
+  background-color: var(--bone);
+  border: 2px solid var(--rust);
+}
+
+.calendar-cell.other-month {
+  opacity: 0.4;
+}

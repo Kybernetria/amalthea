@@ -1,0 +1,67 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import siteConfig from '../../site-config.json';
+
+const { frontmatter } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const dateStr = new Date(frontmatter.date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={frontmatter.title}>
+  <article class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+    <!-- Back link -->
+    <a href={`${base}writing/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust mb-8 inline-block">
+      ← All Writing
+    </a>
+
+    <!-- Header -->
+    <header class="mb-12">
+      <p class="typewriter text-xs text-driftwood mb-3 uppercase tracking-widest">
+        {dateStr}
+      </p>
+      <h1 class="font-display font-black text-espresso leading-tight mb-6" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+        {frontmatter.title}
+      </h1>
+      {frontmatter.tags && frontmatter.tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {frontmatter.tags.map((tag: string) => (
+            <span class="text-xs font-heading uppercase tracking-wider border border-rust text-rust px-2 py-0.5 rounded-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <!-- Hero image -->
+    {frontmatter.heroImage && (
+      <div class="frame-photo mb-12 overflow-hidden organic-radius">
+        <img src={frontmatter.heroImage} alt="" class="w-full photo-grain" />
+      </div>
+    )}
+
+    <!-- Content -->
+    <div class="prose-dropcap prose-content font-body text-espresso leading-relaxed space-y-6
+                [&>h2]:font-heading [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:text-espresso [&>h2]:mt-12 [&>h2]:mb-4
+                [&>h3]:font-heading [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:text-espresso [&>h3]:mt-8 [&>h3]:mb-3
+                [&>p]:text-base [&>p]:leading-relaxed [&>p]:text-driftwood
+                [&>blockquote]:border-l-4 [&>blockquote]:border-rust [&>blockquote]:pl-6 [&>blockquote]:italic [&>blockquote]:text-driftwood [&>blockquote]:my-8
+                [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:text-driftwood [&>ul]:space-y-2
+                [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:text-driftwood [&>ol]:space-y-2
+                [&_strong]:text-espresso [&_strong]:font-bold
+                [&_a]:text-rust [&_a]:underline [&_a]:underline-offset-2">
+      <slot />
+    </div>
+
+    <!-- Footer divider -->
+    <div class="mt-16 pt-8 border-t border-driftwood/30">
+      <a href={`${base}writing/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust">
+        ← Back to all writing
+      </a>
+    </div>
+  </article>
+</BaseLayout>

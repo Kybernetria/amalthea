@@ -1,0 +1,126 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import siteConfig from '../../site-config.json';
+
+const { frontmatter } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const dateObj = new Date(frontmatter.date);
+const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+const monthDay = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
+const fullDate = dateObj.toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const eventTypeColors: Record<string, string> = {
+  reading: 'bg-rust',
+  workshop: 'bg-sage',
+  discussion: 'bg-mustard',
+  film: 'bg-charcoal',
+  meeting: 'bg-driftwood',
+  other: 'bg-espresso',
+};
+const typeColor = eventTypeColors[frontmatter.eventType] || 'bg-espresso';
+---
+
+<BaseLayout title={frontmatter.title}>
+  <article class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+    <!-- Back link -->
+    <a href={`${base}events/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust mb-8 inline-block">
+      ← All Events
+    </a>
+
+    <div class="md:flex md:gap-12">
+      <!-- Main content -->
+      <div class="md:flex-1">
+        <!-- Header -->
+        <header class="mb-10">
+          <!-- Date display -->
+          <div class="flex items-start gap-6 mb-6">
+            <div class="text-center bg-parchment border-2 border-driftwood/30 px-4 py-3 organic-radius paper-inset flex-shrink-0">
+              <p class="typewriter text-xs text-driftwood tracking-widest">{dayName}</p>
+              <p class="font-accent text-4xl text-espresso leading-none">{dateObj.getDate()}</p>
+              <p class="typewriter text-xs text-driftwood">{dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}</p>
+            </div>
+            <div>
+              <span class={`inline-block text-xs font-heading uppercase tracking-wider text-parchment px-3 py-1 rounded-sm mb-3 ${typeColor}`}>
+                {frontmatter.eventType}
+              </span>
+              <h1 class="font-display font-black text-espresso leading-tight" style="font-size: clamp(1.8rem, 4vw, 3rem);">
+                {frontmatter.title}
+              </h1>
+            </div>
+          </div>
+
+          <!-- Meta -->
+          <div class="flex flex-wrap gap-x-6 gap-y-2 typewriter text-sm text-driftwood border-t border-b border-driftwood/20 py-4">
+            <span>🕐 {frontmatter.startTime}{frontmatter.endTime ? ` – ${frontmatter.endTime}` : ''}</span>
+            <span>📍 {frontmatter.location}</span>
+            {frontmatter.organizer && <span>👤 {frontmatter.organizer}</span>}
+            {frontmatter.isRecurring && <span>🔄 {frontmatter.recurrencePattern}</span>}
+          </div>
+        </header>
+
+        <!-- Event image -->
+        {frontmatter.image && (
+          <div class="frame-photo mb-10 overflow-hidden organic-radius">
+            <img src={frontmatter.image} alt="" class="w-full photo-grain" />
+          </div>
+        )}
+
+        <!-- Content -->
+        <div class="font-body text-espresso leading-relaxed space-y-6
+                    [&>h2]:font-heading [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:text-espresso [&>h2]:mt-10 [&>h2]:mb-4
+                    [&>p]:text-base [&>p]:leading-relaxed [&>p]:text-driftwood
+                    [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:text-driftwood [&>ul]:space-y-2
+                    [&>ol]:list-decimal [&>ol]:pl-6 [&>ol]:text-driftwood [&>ol]:space-y-2
+                    [&_strong]:text-espresso [&_strong]:font-bold
+                    [&_a]:text-rust [&_a]:underline">
+          <slot />
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="md:w-72 mt-12 md:mt-0 flex-shrink-0">
+        <div class="bg-parchment organic-radius paper-inset p-6 border border-driftwood/20 sticky top-24">
+          <h3 class="font-heading font-semibold text-espresso uppercase tracking-wider text-sm mb-4">Details</h3>
+          <dl class="space-y-3 typewriter text-sm">
+            <div>
+              <dt class="text-driftwood text-xs">Date</dt>
+              <dd class="text-espresso">{fullDate}</dd>
+            </div>
+            <div>
+              <dt class="text-driftwood text-xs">Time</dt>
+              <dd class="text-espresso">{frontmatter.startTime}{frontmatter.endTime ? ` – ${frontmatter.endTime}` : ''}</dd>
+            </div>
+            <div>
+              <dt class="text-driftwood text-xs">Location</dt>
+              <dd class="text-espresso">{frontmatter.location}</dd>
+            </div>
+            {frontmatter.organizer && (
+              <div>
+                <dt class="text-driftwood text-xs">Organizer</dt>
+                <dd class="text-espresso">{frontmatter.organizer}</dd>
+              </div>
+            )}
+          </dl>
+
+          <div class="mt-6 pt-4 border-t border-driftwood/20">
+            <p class="typewriter text-xs text-driftwood mb-2">📍 {siteConfig.address}</p>
+            <p class="typewriter text-xs text-driftwood">Free unless noted. All welcome.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-16 pt-8 border-t border-driftwood/30">
+      <a href={`${base}events/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust">
+        ← Back to all events
+      </a>
+    </div>
+  </article>
+</BaseLayout>

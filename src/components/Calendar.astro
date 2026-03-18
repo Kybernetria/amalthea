@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const allEvents = (await getCollection('events', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+const eventTypeColors: Record<string, string> = {
+  reading: 'bg-rust',
+  workshop: 'bg-sage',
+  discussion: 'bg-mustard',
+  film: 'bg-charcoal',
+  meeting: 'bg-driftwood',
+  other: 'bg-espresso',
+};
+
+// Build calendar data for current month
+const now = new Date();
+const year = now.getFullYear();
+const month = now.getMonth();
+const monthName = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+const firstDay = new Date(year, month, 1);
+const lastDay = new Date(year, month + 1, 0);
+const startPad = firstDay.getDay(); // 0=Sun
+const totalDays = lastDay.getDate();
+
+// Build weeks
+const days: Array<{ date: number | null; isToday: boolean; isOtherMonth: boolean; events: typeof allEvents }> = [];
+
+// Padding days from previous month
+for (let i = 0; i < startPad; i++) {
+  const prevDate = new Date(year, month, -startPad + i + 1);
+  days.push({ date: prevDate.getDate(), isToday: false, isOtherMonth: true, events: [] });
+}
+
+// Actual days
+for (let d = 1; d <= totalDays; d++) {
+  const thisDate = new Date(year, month, d);
+  const isToday = thisDate.toDateString() === now.toDateString();
+  const dayEvents = allEvents.filter(e => {
+    const eDate = new Date(e.data.date);
+    return eDate.getFullYear() === year && eDate.getMonth() === month && eDate.getDate() === d;
+  });
+  days.push({ date: d, isToday, isOtherMonth: false, events: dayEvents });
+}
+
+// Padding days to fill last week
+const remaining = 7 - (days.length % 7);
+if (remaining < 7) {
+  for (let i = 1; i <= remaining; i++) {
+    days.push({ date: i, isToday: false, isOtherMonth: true, events: [] });
+  }
+}
+
+const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+---
+
+<!-- Desktop calendar -->
+<div class="hidden md:block">
+  <h3 class="font-display font-black text-espresso text-2xl mb-6">{monthName}</h3>
+  
+  <div class="calendar-grid organic-radius overflow-hidden">
+    {/* Weekday headers */}
+    {weekdays.map(wd => (
+      <div class="bg-charcoal text-parchment typewriter text-xs text-center py-2 tracking-wider uppercase">
+        {wd}
+      </div>
+    ))}
+
+    {/* Day cells */}
+    {days.map(day => (
+      <div class={`calendar-cell ${day.isToday ? 'today' : ''} ${day.isOtherMonth ? 'other-month' : ''}`}>
+        {day.date && (
+          <>
+            <span class={`typewriter text-xs ${day.isToday ? 'text-rust font-bold' : 'text-driftwood'}`}>
+              {day.date}
+            </span>
+            {day.events.map(ev => (
+              <a href={`${base}events/${ev.id}/`} class="block mt-1">
+                <div class={`text-[0.6rem] text-parchment px-1 py-0.5 rounded-sm truncate ${eventTypeColors[ev.data.eventType] || 'bg-espresso'}`}>
+                  {ev.data.title}
+                </div>
+              </a>
+            ))}
+          </>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- Mobile list view -->
+<div class="md:hidden">
+  <h3 class="font-display font-black text-espresso text-2xl mb-6">{monthName}</h3>
+  
+  {allEvents.length === 0 ? (
+    <p class="font-body text-driftwood italic">No events scheduled yet.</p>
+  ) : (
+    <div class="space-y-4">
+      {allEvents.map(event => {
+        const d = new Date(event.data.date);
+        const dateStr = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        const typeColor = eventTypeColors[event.data.eventType] || 'bg-espresso';
+        return (
+          <a href={`${base}events/${event.id}/`} class="block">
+            <div class="flex gap-4 items-start bg-parchment paper-inset organic-radius p-4 card-lift">
+              <div class="flex-shrink-0 text-center w-14">
+                <p class="font-accent text-2xl text-espresso leading-none">{d.getDate()}</p>
+                <p class="typewriter text-[0.6rem] text-driftwood">{d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}</p>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class={`inline-block text-[0.6rem] font-heading uppercase tracking-wider text-parchment px-1.5 py-0.5 rounded-sm mb-1 ${typeColor}`}>
+                  {event.data.eventType}
+                </span>
+                <h4 class="font-heading font-semibold text-espresso text-sm truncate">{event.data.title}</h4>
+                <p class="typewriter text-[0.65rem] text-driftwood">{event.data.startTime} · {event.data.location}</p>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  )}
+</div>
