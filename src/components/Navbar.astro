@@ -112,7 +112,13 @@ const navLinks = [
   const closeBtn = document.getElementById('mobile-close-btn');
   const overlay = document.getElementById('mobile-overlay');
   if (menuBtn && closeBtn && overlay) {
-    menuBtn.addEventListener('click', () => overlay.classList.add('active'));
+    menuBtn.addEventListener('click', () => {
+      if (overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+      } else {
+        overlay.classList.add('active');
+      }
+    });
     closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
     overlay.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => overlay.classList.remove('active'));
