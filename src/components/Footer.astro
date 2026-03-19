@@ -5,31 +5,37 @@ const base = import.meta.env.BASE_URL;
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-espresso text-cream relative z-10">
+<footer class="bg-ink text-cream relative z-10">
+  <!-- Warm accent stripe -->
+  <div class="accent-stripe"></div>
+
   <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
 
       <!-- Col 1: Identity -->
       <div>
-        <h3 class="font-display font-black text-cream text-2xl mb-4">
+        <h3 class="font-display font-black text-cream text-2xl mb-2">
           {siteConfig.name}
         </h3>
-        <p class="font-body italic text-cream/60 text-sm leading-relaxed mb-6">
-          <!-- PLACEHOLDER: Replace with bookstore description -->
-          A gathering place for radical literature, collective learning, and community organizing. Open to all.
+        <p class="typewriter text-xs text-mustard uppercase tracking-wider mb-4">
+          {siteConfig.description}
         </p>
-        <!-- Decorative: hand-drawn style book icon -->
-        <div class="flex items-center gap-2 text-cream/30">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-          </svg>
-          <span class="typewriter text-xs tracking-wider">BOOKS · EVENTS · COMMUNITY</span>
+        <p class="font-body italic text-cream/50 text-sm leading-relaxed mb-4">
+          Malmö radical bookstore // Radikalt bokkafé i Malmö
+        </p>
+        <p class="typewriter text-xs text-cream/40 mb-6">
+          {siteConfig.address}
+        </p>
+        <!-- Swish -->
+        <div class="bg-cream/5 border border-cream/10 rounded-sm p-3 inline-block">
+          <p class="typewriter text-xs text-cream/50 mb-1">🚩 Stötta Amalthea?</p>
+          <p class="typewriter text-sm text-mustard">Swish till {siteConfig.swish}</p>
         </div>
       </div>
 
       <!-- Col 2: Navigation -->
       <div>
-        <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/50 mb-4">
+        <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
           Navigate
         </h4>
         <nav class="space-y-2.5">
@@ -39,7 +45,7 @@ const currentYear = new Date().getFullYear();
             { label: 'Writing', href: `${base}writing/` },
             { label: 'About', href: `${base}about/` },
           ].map(link => (
-            <a href={link.href} class="block font-heading text-sm text-cream/70 hover:text-mustard transition-colors tracking-wide">
+            <a href={link.href} class="block font-heading text-sm text-cream/60 hover:text-mustard transition-colors tracking-wide">
               {link.label}
             </a>
           ))}
@@ -48,31 +54,16 @@ const currentYear = new Date().getFullYear();
 
       <!-- Col 3: Connect -->
       <div>
-        <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/50 mb-4">
-          Stay in the loop
+        <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
+          Kontakt
         </h4>
-        <!-- Email subscribe placeholder -->
-        <form class="mb-6" onsubmit="return false;">
-          <div class="flex">
-            <input
-              type="email"
-              placeholder="your@email.org"
-              class="flex-1 bg-bone/10 border border-cream/20 text-cream typewriter text-sm px-3 py-2 placeholder:text-cream/30 focus:outline-none focus:border-mustard/50 rounded-l-sm"
-            />
-            <button type="submit" class="bg-rust text-parchment font-heading uppercase text-xs tracking-wider px-4 py-2 hover:bg-rust/80 transition-colors rounded-r-sm">
-              Join
-            </button>
-          </div>
-          <p class="typewriter text-[0.6rem] text-cream/30 mt-2">No spam. Occasional event updates and book recs.</p>
-        </form>
+        <!-- Email -->
+        <a href={`mailto:${siteConfig.email}`} class="block typewriter text-sm text-cream/60 hover:text-mustard transition-colors mb-4">
+          {siteConfig.email}
+        </a>
 
         <!-- Social links -->
-        <div class="flex gap-4">
-          {siteConfig.socials.mastodon && (
-            <a href={siteConfig.socials.mastodon} target="_blank" rel="noopener noreferrer me" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Mastodon">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.327 8.566c0-4.339-2.843-5.61-2.843-5.61-1.433-.658-3.894-.935-6.451-.956h-.063c-2.557.021-5.016.298-6.45.956 0 0-2.843 1.272-2.843 5.61 0 .993-.019 2.181.012 3.441.103 4.243.778 8.425 4.701 9.463 1.809.479 3.362.579 4.612.51 2.268-.126 3.541-.809 3.541-.809l-.075-1.646s-1.621.511-3.441.449c-1.804-.062-3.707-.194-3.999-2.409a4.523 4.523 0 0 1-.04-.621s1.77.432 4.014.535c1.372.063 2.658-.08 3.965-.236 2.506-.299 4.688-1.843 4.962-3.254.434-2.223.398-5.424.398-5.424zm-3.353 5.59h-2.081V9.057c0-1.075-.452-1.62-1.357-1.62-1 0-1.501.647-1.501 1.927v2.791h-2.069V9.364c0-1.28-.501-1.927-1.502-1.927-.905 0-1.357.546-1.357 1.62v5.099H6.026V8.903c0-1.074.273-1.927.823-2.558.566-.631 1.307-.955 2.228-.955 1.065 0 1.872.41 2.405 1.228l.518.869.519-.869c.533-.818 1.34-1.228 2.405-1.228.92 0 1.662.324 2.228.955.549.631.822 1.484.822 2.558v5.253z"/></svg>
-            </a>
-          )}
+        <div class="flex gap-4 mb-6">
           {siteConfig.socials.instagram && (
             <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Instagram">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
@@ -82,19 +73,34 @@ const currentYear = new Date().getFullYear();
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 7L2 7"></path></svg>
           </a>
         </div>
+
+        <!-- Newsletter -->
+        <form class="mb-4" onsubmit="return false;">
+          <div class="flex">
+            <input
+              type="email"
+              placeholder="din@email.se"
+              class="flex-1 bg-cream/5 border border-cream/15 text-cream typewriter text-sm px-3 py-2 placeholder:text-cream/25 focus:outline-none focus:border-mustard/50 rounded-l-sm"
+            />
+            <button type="submit" class="bg-rust text-parchment font-heading uppercase text-xs tracking-wider px-4 py-2 hover:bg-rust/80 transition-colors rounded-r-sm">
+              Prenumerera
+            </button>
+          </div>
+          <p class="typewriter text-[0.6rem] text-cream/25 mt-2">Inga spam. Bara event och boktips.</p>
+        </form>
       </div>
     </div>
   </div>
 
   <!-- Bottom bar -->
-  <div class="border-t border-cream/10">
+  <div class="border-t border-cream/8">
     <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p class="typewriter text-xs text-cream/30">
-        © {currentYear} · CC BY-SA 4.0
+      <p class="typewriter text-xs text-cream/25">
+        © {currentYear} {siteConfig.name} · CC BY-SA 4.0
       </p>
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-sage animate-pulse"></span>
-        <span class="typewriter text-xs text-cream/30 uppercase tracking-widest">Organizing Daily</span>
+        <span class="w-2 h-2 rounded-full bg-rust animate-pulse"></span>
+        <span class="typewriter text-xs text-cream/25 uppercase tracking-widest">Solidaritet varje dag</span>
       </div>
     </div>
   </div>

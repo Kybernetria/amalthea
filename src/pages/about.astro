@@ -8,92 +8,73 @@ import siteConfig from '../../site-config.json';
 
     <!-- Header -->
     <header class="mb-16">
-      <p class="typewriter text-xs text-driftwood uppercase tracking-[0.2em] mb-3">About</p>
+      <p class="typewriter text-xs text-driftwood uppercase tracking-[0.2em] mb-3">Om oss</p>
       <h1 class="font-display font-black text-espresso leading-tight mb-6" style="font-size: clamp(2.5rem, 5vw, 4rem);">
-        <!-- PLACEHOLDER: Replace with real headline -->
-        Our Story
+        Amalthea Bokkafé
       </h1>
+      <p class="font-body italic text-driftwood text-lg mb-4">
+        Malmö radical bookstore // Radikalt bokkafé i Malmö
+      </p>
+      <p class="typewriter text-xs text-rust uppercase tracking-wider mb-6">
+        {siteConfig.description}
+      </p>
       <div class="w-24 h-1 bg-rust"></div>
     </header>
 
     <!-- Our Story -->
     <section class="prose-dropcap mb-20">
       <div class="font-body text-driftwood leading-relaxed space-y-6 text-base">
-        <!-- PLACEHOLDER: Replace all paragraphs below -->
         <p>
-          We opened our doors in 2019 in a small storefront on a quiet corner, with two bookshelves, a kettle, and a conviction that a city without an independent radical bookstore is a city missing a vital organ.
+          Amalthea Bokkafé is a nonprofit radical bookstore and community café in Malmö, Sweden. We carry books, zines, and literature on radical politics, labor history, feminism, anti-racism, ecology, and everything in between.
         </p>
         <p>
-          Since then, we've grown into a community hub: a place to find the books that schools don't teach, to gather for reading groups and workshops, to organize around housing, labor, and mutual aid, and to simply sit with a cup of tea and think.
+          We're a gathering place — for reading groups, film screenings, workshops, and conversations. On Thursdays we serve soup. On weekends we pour coffee. Every day we try to build something that matters.
         </p>
         <p>
-          We're worker-owned and collectively run. No bosses, no investors, no venture capital. We pay our rent through book sales, event donations, and the extraordinary generosity of our community. Every decision is made together, by the people who keep the lights on and the shelves stocked.
+          Named after the ship <em>Amalthea</em>, whose history is woven into the story of workers' struggle in Sweden, this space carries that spirit forward: solidarity, mutual aid, and a belief that another world is not only possible but necessary.
         </p>
       </div>
     </section>
 
     <!-- The Space -->
     <section class="mb-20">
-      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-8">The Space</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <!-- PLACEHOLDER: Replace with real photos -->
-        <div class="frame-photo organic-radius overflow-hidden bg-bone aspect-[4/3]" style="transform: rotate(-0.8deg);">
-          <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-bone to-driftwood/15 photo-grain">
-            <span class="typewriter text-driftwood/40 text-sm">[ interior photo ]</span>
-          </div>
-        </div>
-        <div class="frame-photo organic-radius-alt overflow-hidden bg-bone aspect-[4/3]" style="transform: rotate(0.5deg);">
-          <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-bone to-driftwood/15 photo-grain">
-            <span class="typewriter text-driftwood/40 text-sm">[ shelves photo ]</span>
-          </div>
-        </div>
-      </div>
+      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-8">Rummet</h2>
       <div class="font-body text-driftwood leading-relaxed space-y-4 text-base">
-        <!-- PLACEHOLDER: Replace with real description -->
         <p>
-          The main floor holds our curated collection: radical theory, labor history, feminism, anti-racism, ecology, poetry, fiction, children's books, and a rotating selection of zines from local makers.
+          You'll find us at <strong class="text-espresso">{siteConfig.address}</strong>. The shelves hold a curated collection of radical theory, poetry, fiction, children's books, and a rotating selection of zines from local makers.
         </p>
         <p>
-          The back room is our gathering space — a flexible room for reading groups, workshops, film screenings, and community meetings. It seats about 30 and comes equipped with a projector, a sound system, and an industrial-strength kettle.
+          The space is open for community use — reading groups, workshops, film screenings, meetings. If you have an idea for an event, get in touch.
         </p>
       </div>
     </section>
 
-    <!-- The Collective -->
-    <section class="mb-20">
-      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-8">The Collective</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- PLACEHOLDER: Replace with real team members -->
-        {[
-          { name: 'Alex R.', role: 'Books & Ordering', bio: 'Reads too much theory, not enough fiction. Favorite shelf: labor history.' },
-          { name: 'Sam K.', role: 'Events & Outreach', bio: 'Believes every event should end with tea and a plan. Organizer at heart.' },
-          { name: 'Jordan M.', role: 'Space & Operations', bio: 'Keeps the lights on and the shelves organized. Zine enthusiast.' },
-        ].map(member => (
-          <div class="bg-parchment organic-radius paper-inset p-6">
-            <div class="w-16 h-16 rounded-full bg-bone border-2 border-driftwood/20 mb-4 flex items-center justify-center" style="transform: rotate(-1deg);">
-              <span class="font-display font-black text-driftwood/30 text-xl">{member.name[0]}</span>
-            </div>
-            <h3 class="font-heading font-semibold text-espresso text-lg">{member.name}</h3>
-            <p class="typewriter text-xs text-rust mb-2">{member.role}</p>
-            <p class="font-body text-sm text-driftwood leading-relaxed">{member.bio}</p>
-          </div>
-        ))}
+    <!-- Support -->
+    <section class="bg-charcoal text-cream organic-radius p-8 md:p-12 mb-20">
+      <h2 class="font-display font-black text-cream text-2xl md:text-3xl mb-6">Stötta Amalthea</h2>
+      <div class="font-body text-cream/70 leading-relaxed space-y-4 text-base">
+        <p>
+          Amalthea is a nonprofit. We keep the doors open through book sales, event donations, and the generosity of our community. Every contribution matters.
+        </p>
+        <div class="bg-cream/5 border border-cream/15 rounded-sm p-6 mt-6">
+          <p class="typewriter text-lg text-mustard mb-2">🚩 Swish till {siteConfig.swish}</p>
+          <p class="typewriter text-sm text-cream/50">Varje krona hjälper oss hålla dörrarna öppna.</p>
+        </div>
       </div>
     </section>
 
     <!-- Get Involved -->
     <section class="bg-bone organic-radius-alt paper-inset p-8 md:p-12">
-      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-6">Get Involved</h2>
+      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-6">Engagera dig</h2>
       <div class="font-body text-driftwood leading-relaxed space-y-4 text-base">
-        <!-- PLACEHOLDER: Replace with real information -->
         <p>
-          We're always looking for people who want to contribute to the project. There are many ways to get involved:
+          There are many ways to be part of the project:
         </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong class="text-espresso">Volunteer</strong> — help with events, shelving, or the newsletter</li>
-          <li><strong class="text-espresso">Donate</strong> — every contribution keeps the lights on</li>
-          <li><strong class="text-espresso">Propose an event</strong> — the back room is open for community use</li>
-          <li><strong class="text-espresso">Spread the word</strong> — tell your friends, your neighbors, your coworkers</li>
+          <li><strong class="text-espresso">Volontär</strong> — help with events, shelving, the café, or the newsletter</li>
+          <li><strong class="text-espresso">Donera</strong> — Swish till {siteConfig.swish}</li>
+          <li><strong class="text-espresso">Föreslå event</strong> — the space is open for community use</li>
+          <li><strong class="text-espresso">Sprid ordet</strong> — tell your friends, neighbors, coworkers</li>
         </ul>
         <p>
           Drop by the shop or email us at <a href={`mailto:${siteConfig.email}`} class="text-rust underline underline-offset-2">{siteConfig.email}</a>.

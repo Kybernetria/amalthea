@@ -5,77 +5,69 @@ const base = import.meta.env.BASE_URL;
 const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
 const todayHours = siteConfig.hours.find((h: any) => h.day === today);
 
-// Build a summary of open days
-const openDays = siteConfig.hours.filter((h: any) => h.status === 'open');
-const firstOpen = openDays[0];
-const lastOpen = openDays[openDays.length - 1];
-const hoursSummary = firstOpen && lastOpen
-  ? `Open ${firstOpen.day.slice(0,3)}–${lastOpen.day.slice(0,3)}, ${firstOpen.hours}`
-  : 'See hours';
+const todayNote = todayHours?.note ? ` · ${todayHours.note}` : '';
+const todayStatus = todayHours?.status === 'open'
+  ? `Öppet idag · ${todayHours.hours}${todayNote}`
+  : 'Stängt idag';
 ---
 
-<section class="relative min-h-[85dvh] flex items-end overflow-hidden bg-cream">
-  <!-- Decorative background shapes -->
-  <div class="absolute inset-0 overflow-hidden">
-    <!-- Abstract warm gradient -->
-    <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-bl from-bone/80 via-transparent to-transparent"></div>
-    <!-- Decorative circles -->
-    <div class="absolute top-20 right-20 w-64 h-64 rounded-full border-2 border-dashed border-driftwood/10 hidden lg:block"></div>
-    <div class="absolute top-40 right-40 w-40 h-40 rounded-full border border-rust/10 hidden lg:block"></div>
-    <!-- Photo placeholder area -->
-    <div class="absolute top-12 right-8 md:right-16 lg:right-24 w-[280px] md:w-[380px] lg:w-[440px] hidden md:block">
-      <div class="frame-photo organic-radius-alt overflow-hidden bg-bone aspect-[4/5]" style="transform: rotate(1.5deg);">
-        <!-- PLACEHOLDER: Replace with candid bookstore photo -->
-        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-bone to-driftwood/20 photo-grain">
-          <div class="text-center p-8">
-            <div class="typewriter text-driftwood/40 text-sm">[ bookstore photo ]</div>
-            <div class="typewriter text-driftwood/30 text-xs mt-2">candid · grainy · warm</div>
-          </div>
-        </div>
-      </div>
-    </div>
+<section class="relative min-h-[90dvh] flex items-end overflow-hidden bg-charcoal">
+  <!-- Background image with warm overlay -->
+  <div class="absolute inset-0">
+    <img
+      src={`${base}Amaltheahero.jpg`}
+      alt="Amalthea Bokkafé interior"
+      class="w-full h-full object-cover opacity-50"
+      loading="eager"
+    />
+    <!-- Warm gradient overlays -->
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/70 to-charcoal/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal/80 via-transparent to-transparent"></div>
   </div>
 
   <!-- Text content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 md:pb-24 pt-24 w-full">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 md:pb-24 pt-32 w-full">
     <div class="max-w-2xl">
       <!-- Label -->
-      <p class="typewriter text-xs text-driftwood uppercase tracking-[0.2em] mb-4">
-        <!-- PLACEHOLDER: Replace with real establishment date -->
-        Est. 2019 · A Community Space
+      <p class="typewriter text-xs text-mustard uppercase tracking-[0.25em] mb-4">
+        Ideell förening · Malmö
       </p>
 
       <!-- Headline -->
-      <h1 class="font-display font-black text-espresso leading-[1.05] mb-6" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">
-        <!-- PLACEHOLDER: Replace with bookstore name/headline -->
-        A radical bookstore<br/>and community hub
+      <h1 class="font-display font-black text-parchment leading-[1.05] mb-6" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">
+        Amalthea<br/>Bokkafé
       </h1>
 
-      <!-- Subhead -->
-      <p class="font-body italic text-driftwood text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
-        <!-- PLACEHOLDER: Replace with your own description -->
-        Books, events, and organizing space for the curious, the critical, and the collective.
+      <!-- Subhead — bilingual -->
+      <p class="font-body italic text-cream/80 text-lg md:text-xl leading-relaxed mb-4 max-w-lg">
+        Malmö radical bookstore // Radikalt bokkafé i Malmö
+      </p>
+      <p class="font-body text-cream/60 text-base leading-relaxed mb-10 max-w-lg">
+        Books, soup, events, and community organizing in Kristianstad&shy;sgatan.
       </p>
 
       <!-- CTA row -->
-      <div class="flex flex-wrap gap-4 mb-12">
-        <a href={`${base}events/`} class="btn-fill font-heading font-semibold uppercase text-sm tracking-wider border-2 border-rust text-rust px-6 py-3 inline-block transition-colors">
-          Upcoming Events
+      <div class="flex flex-wrap gap-4 mb-10">
+        <a href={`${base}events/`} class="btn-fill font-heading font-semibold uppercase text-sm tracking-wider border-2 border-rust text-parchment bg-rust/90 px-6 py-3 inline-block transition-colors hover:bg-rust">
+          Kommande event
         </a>
-        <a href={`${base}about/`} class="link-slide font-heading font-semibold uppercase text-sm tracking-wider text-espresso px-6 py-3 inline-block hover:text-rust transition-colors">
-          About Us →
+        <a href={`${base}about/`} class="font-heading font-semibold uppercase text-sm tracking-wider text-cream/80 px-6 py-3 inline-block hover:text-mustard transition-colors">
+          Om oss →
         </a>
       </div>
 
-      <!-- Hours pill -->
-      <div class="inline-block">
-        <div class="typewriter text-sm text-espresso bg-parchment border border-rust/30 px-4 py-2 rounded-sm paper-inset">
-          {hoursSummary}
+      <!-- Hours + Support row -->
+      <div class="flex flex-wrap gap-4 items-center">
+        <div class="typewriter text-sm text-parchment bg-charcoal/80 border border-driftwood/40 px-4 py-2 rounded-sm backdrop-blur-sm">
+          {todayStatus}
+        </div>
+        <div class="typewriter text-sm text-mustard bg-charcoal/80 border border-mustard/30 px-4 py-2 rounded-sm backdrop-blur-sm">
+          🚩 Stötta Amalthea? Swish till {siteConfig.swish}
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bottom border -->
-  <div class="absolute bottom-0 left-0 right-0 h-px bg-driftwood/20"></div>
+  <!-- Warm accent stripe at bottom -->
+  <div class="absolute bottom-0 left-0 right-0 accent-stripe"></div>
 </section>

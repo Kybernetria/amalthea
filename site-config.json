@@ -1,21 +1,23 @@
 {
-  "name": "[BOOKSTORE NAME]",
-  "tagline": "A radical community bookstore",
-  "address": "742 Mayday Avenue, Rivertown, ST 12345",
-  "email": "email@bookstore.org",
-  "phone": "(555) 123-4567",
+  "name": "Amalthea Bokkafé",
+  "tagline": "Radikalt bokkafé i Malmö",
+  "taglineEn": "Malmö radical bookstore",
+  "description": "Nonprofit organization",
+  "address": "Kristianstadsgatan 41, Malmö, Sweden 21435",
+  "email": "amaltheabokkafe@riseup.net",
+  "swish": "123-1204791",
   "hours": [
     { "day": "Monday", "status": "closed" },
-    { "day": "Tuesday", "status": "closed" },
-    { "day": "Wednesday", "status": "open", "hours": "11am–7pm" },
-    { "day": "Thursday", "status": "open", "hours": "11am–7pm" },
-    { "day": "Friday", "status": "open", "hours": "11am–7pm" },
-    { "day": "Saturday", "status": "open", "hours": "10am–8pm" },
-    { "day": "Sunday", "status": "open", "hours": "10am–8pm" }
+    { "day": "Tuesday", "status": "open", "hours": "10:00–19:00" },
+    { "day": "Wednesday", "status": "closed" },
+    { "day": "Thursday", "status": "open", "hours": "18:00–20:00", "note": "Soup Day 🍲" },
+    { "day": "Friday", "status": "closed" },
+    { "day": "Saturday", "status": "open", "hours": "12:00–16:00" },
+    { "day": "Sunday", "status": "open", "hours": "12:00–16:00" }
   ],
   "socials": {
-    "instagram": "https://instagram.com/bookstore",
-    "mastodon": "https://kolektiva.social/@bookstore",
-    "email": "email@bookstore.org"
+    "instagram": "https://instagram.com/amaltheabokkafe",
+    "mastodon": "",
+    "email": "amaltheabokkafe@riseup.net"
   }
 }

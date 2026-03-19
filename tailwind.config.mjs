@@ -4,15 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream:     '#F5F0E8',
-        bone:      '#EBE5DB',
-        espresso:  '#2A2520',
-        driftwood: '#6B625A',
-        rust:      '#B84C2E',
-        mustard:   '#D4A24C',
-        sage:      '#5A7A5A',
-        charcoal:  '#3A3632',
-        parchment: '#FAF8F3',
+        cream:     '#EDE4D3',  // warm oat
+        bone:      '#DDD2BF',  // warmer bone
+        espresso:  '#1E1A17',  // deep warm black
+        driftwood: '#5C524A',  // warm brown-grey
+        rust:      '#B83A2A',  // anarchist red, warm
+        mustard:   '#C9943A',  // deep warm gold
+        sage:      '#4A6B4A',  // muted forest green
+        charcoal:  '#2D2926',  // warm near-black
+        parchment: '#F2E8D5',  // warm light paper
+        terracotta:'#A0522D',  // earthy brick
+        ink:       '#1A1614',  // deepest warm black
       },
       fontFamily: {
         display:    ['"Playfair Display"', 'serif'],

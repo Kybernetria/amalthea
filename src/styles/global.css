@@ -3,15 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --cream: #F5F0E8;
-  --bone: #EBE5DB;
-  --espresso: #2A2520;
-  --driftwood: #6B625A;
-  --rust: #B84C2E;
-  --mustard: #D4A24C;
-  --sage: #5A7A5A;
-  --charcoal: #3A3632;
-  --parchment: #FAF8F3;
+  --cream: #EDE4D3;
+  --bone: #DDD2BF;
+  --espresso: #1E1A17;
+  --driftwood: #5C524A;
+  --rust: #B83A2A;
+  --mustard: #C9943A;
+  --sage: #4A6B4A;
+  --charcoal: #2D2926;
+  --parchment: #F2E8D5;
+  --terracotta: #A0522D;
+  --ink: #1A1614;
 }
 
 * {
@@ -48,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 600px;
   background-repeat: repeat;
   background-attachment: fixed;
-  opacity: 0.18;
+  opacity: 0.22;
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: multiply;
@@ -61,17 +63,17 @@ h1, h2, h3, h4, h5, h6 {
   inset: 0;
   background: url('/amalthea/grain-overlay.svg');
   background-size: 300px;
-  opacity: 0.035;
+  opacity: 0.04;
   pointer-events: none;
   z-index: 9999;
 }
 
 /* Photo frame effect */
 .frame-photo {
-  border: 2px solid var(--driftwood);
+  border: 3px solid var(--driftwood);
   box-shadow:
-    inset 0 0 20px rgba(42, 37, 32, 0.05),
-    3px 3px 8px rgba(42, 37, 32, 0.15);
+    inset 0 0 30px rgba(30, 26, 23, 0.08),
+    4px 4px 12px rgba(30, 26, 23, 0.2);
   transform: rotate(-0.3deg);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -80,8 +82,8 @@ h1, h2, h3, h4, h5, h6 {
 .frame-photo:hover {
   transform: rotate(0deg) translateY(-3px);
   box-shadow:
-    inset 0 0 20px rgba(42, 37, 32, 0.05),
-    3px 6px 16px rgba(42, 37, 32, 0.2);
+    inset 0 0 30px rgba(30, 26, 23, 0.08),
+    4px 8px 20px rgba(30, 26, 23, 0.25);
 }
 
 /* Typewriter class */
@@ -102,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   width: 24px;
   height: 24px;
-  background: linear-gradient(225deg, var(--bone) 50%, rgba(42,37,32,0.08) 50%);
+  background: linear-gradient(225deg, var(--bone) 50%, rgba(30,26,23,0.1) 50%);
   border-radius: 0 0 0 4px;
 }
 
@@ -136,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-lift:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(184, 76, 46, 0.12);
+  box-shadow: 0 6px 24px rgba(184, 58, 42, 0.15);
 }
 
 /* Button fill hover */
@@ -175,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Prose drop caps */
-.prose-dropcap > p:first-of-type::first-letter {
+.prose-dropcap > div > p:first-of-type::first-letter {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
   font-size: 3.5em;
@@ -193,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Inset paper shadow */
 .paper-inset {
-  box-shadow: inset 0 0 40px rgba(42, 37, 32, 0.05);
+  box-shadow: inset 0 0 40px rgba(30, 26, 23, 0.06);
 }
 
 /* Scrollbar styling */
@@ -256,4 +258,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .calendar-cell.other-month {
   opacity: 0.4;
+}
+
+/* Warm accent stripe */
+.accent-stripe {
+  background: linear-gradient(90deg, var(--rust) 0%, var(--terracotta) 50%, var(--mustard) 100%);
+  height: 3px;
 }
