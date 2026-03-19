@@ -56,6 +56,11 @@ const base = import.meta.env.BASE_URL;
       }
       applyLang();
       document.addEventListener('astro:after-swap', applyLang);
+
+      // Scroll to top on every navigation
+      document.addEventListener('astro:after-swap', () => {
+        window.scrollTo(0, 0);
+      });
     </script>
   </body>
 </html>
