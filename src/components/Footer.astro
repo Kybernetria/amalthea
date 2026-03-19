@@ -5,103 +5,90 @@ const base = import.meta.env.BASE_URL;
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-ink text-cream relative z-10">
-  <!-- Warm accent stripe -->
+<footer class="bg-charcoal text-cream relative z-10">
   <div class="accent-stripe"></div>
 
   <div class="max-w-7xl mx-auto px-6 py-16 md:py-20">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
 
-      <!-- Col 1: Identity -->
+      <!-- Col 1: Identity + Support -->
       <div>
         <h3 class="font-display font-black text-cream text-2xl mb-2">
           {siteConfig.name}
         </h3>
-        <p class="typewriter text-xs text-mustard uppercase tracking-wider mb-4">
-          {siteConfig.description}
+        <p class="font-heading text-xs text-mustard uppercase tracking-wider mb-4">
+          <span class="lang-en">{siteConfig.taglineEn || 'Radical bookstore in Malmö'}</span>
+          <span class="lang-sv">{siteConfig.tagline}</span>
         </p>
-        <p class="font-body italic text-cream/50 text-sm leading-relaxed mb-4">
-          Malmö radical bookstore // Radikalt bokkafé i Malmö
-        </p>
-        <p class="typewriter text-xs text-cream/40 mb-6">
+        <p class="font-heading text-xs text-cream/50 mb-6 tracking-wide">
           {siteConfig.address}
         </p>
+
         <!-- Swish -->
-        <div class="bg-cream/5 border border-cream/10 rounded-sm p-3 inline-block">
-          <p class="typewriter text-xs text-cream/50 mb-1">🚩 Stötta Amalthea?</p>
-          <p class="typewriter text-sm text-mustard">Swish till {siteConfig.swish}</p>
+        <div class="bg-cream/5 border border-cream/10 rounded-sm p-4 inline-block">
+          <p class="font-heading text-xs text-cream/50 mb-1">
+            <span class="lang-en">🚩 Support Amalthea</span>
+            <span class="lang-sv">🚩 Stötta Amalthea</span>
+          </p>
+          <p class="font-heading text-sm text-mustard">Swish {siteConfig.swish}</p>
         </div>
       </div>
 
-      <!-- Col 2: Navigation -->
-      <div>
-        <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
-          Navigate
-        </h4>
-        <nav class="space-y-2.5">
-          {[
-            { label: 'Events', href: `${base}events/` },
-            { label: 'Calendar', href: `${base}calendar/` },
-            { label: 'Writing', href: `${base}writing/` },
-            { label: 'About', href: `${base}about/` },
-          ].map(link => (
-            <a href={link.href} class="block font-heading text-sm text-cream/60 hover:text-mustard transition-colors tracking-wide">
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </div>
+      <!-- Col 2: Navigation + Contact -->
+      <div class="md:flex md:gap-12">
+        <div class="mb-8 md:mb-0">
+          <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
+            <span class="lang-en">Navigate</span>
+            <span class="lang-sv">Navigera</span>
+          </h4>
+          <nav class="space-y-2.5">
+            {[
+              { en: 'Events', sv: 'Evenemang', href: `${base}events/` },
+              { en: 'Writing', sv: 'Texter', href: `${base}writing/` },
+              { en: 'About', sv: 'Om oss', href: `${base}about/` },
+            ].map(link => (
+              <a href={link.href} class="block font-heading text-sm text-cream/60 hover:text-mustard transition-colors tracking-wide">
+                <span class="lang-en">{link.en}</span>
+                <span class="lang-sv">{link.sv}</span>
+              </a>
+            ))}
+          </nav>
+        </div>
 
-      <!-- Col 3: Connect -->
-      <div>
-        <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
-          Kontakt
-        </h4>
-        <!-- Email -->
-        <a href={`mailto:${siteConfig.email}`} class="block typewriter text-sm text-cream/60 hover:text-mustard transition-colors mb-4">
-          {siteConfig.email}
-        </a>
-
-        <!-- Social links -->
-        <div class="flex gap-4 mb-6">
-          {siteConfig.socials.instagram && (
-            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Instagram">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
-            </a>
-          )}
-          <a href={`mailto:${siteConfig.email}`} class="text-cream/40 hover:text-mustard transition-colors" aria-label="Email">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 7L2 7"></path></svg>
+        <div>
+          <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
+            <span class="lang-en">Contact</span>
+            <span class="lang-sv">Kontakt</span>
+          </h4>
+          <a href={`mailto:${siteConfig.email}`} class="block font-heading text-sm text-cream/60 hover:text-mustard transition-colors mb-4 tracking-wide">
+            {siteConfig.email}
           </a>
-        </div>
-
-        <!-- Newsletter -->
-        <form class="mb-4" onsubmit="return false;">
-          <div class="flex">
-            <input
-              type="email"
-              placeholder="din@email.se"
-              class="flex-1 bg-cream/5 border border-cream/15 text-cream typewriter text-sm px-3 py-2 placeholder:text-cream/25 focus:outline-none focus:border-mustard/50 rounded-l-sm"
-            />
-            <button type="submit" class="bg-rust text-parchment font-heading uppercase text-xs tracking-wider px-4 py-2 hover:bg-rust/80 transition-colors rounded-r-sm">
-              Prenumerera
-            </button>
+          <div class="flex gap-4">
+            {siteConfig.socials.instagram && (
+              <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Instagram">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
+              </a>
+            )}
+            <a href={`mailto:${siteConfig.email}`} class="text-cream/40 hover:text-mustard transition-colors" aria-label="Email">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 7L2 7"></path></svg>
+            </a>
           </div>
-          <p class="typewriter text-[0.6rem] text-cream/25 mt-2">Inga spam. Bara event och boktips.</p>
-        </form>
+        </div>
       </div>
+
     </div>
   </div>
 
   <!-- Bottom bar -->
   <div class="border-t border-cream/8">
     <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p class="typewriter text-xs text-cream/25">
+      <p class="font-heading text-xs text-cream/25 tracking-wide">
         © {currentYear} {siteConfig.name} · CC BY-SA 4.0
       </p>
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-rust animate-pulse"></span>
-        <span class="typewriter text-xs text-cream/25 uppercase tracking-widest">Solidaritet varje dag</span>
-      </div>
+      <span class="font-heading text-xs text-cream/25 uppercase tracking-widest">
+        <span class="lang-en">Solidarity every day</span>
+        <span class="lang-sv">Solidaritet varje dag</span>
+      </span>
     </div>
   </div>
 </footer>

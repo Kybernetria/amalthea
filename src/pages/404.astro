@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Not Found">
+  <div class="min-h-[70vh] flex items-center justify-center px-6">
+    <div class="text-center max-w-md">
+      <p class="font-display font-black text-rust text-8xl md:text-9xl leading-none mb-4">404</p>
+      <h1 class="font-display font-black text-espresso text-2xl md:text-3xl mb-4">
+        <span class="lang-en">Page not found</span>
+        <span class="lang-sv">Sidan hittades inte</span>
+      </h1>
+      <p class="font-body text-driftwood text-base mb-8 leading-relaxed">
+        <span class="lang-en">The page you're looking for doesn't exist or has been moved.</span>
+        <span class="lang-sv">Sidan du letar efter finns inte eller har flyttats.</span>
+      </p>
+      <a href={base} class="btn-fill font-heading font-semibold uppercase text-sm tracking-wider border-2 border-rust text-parchment bg-rust/90 px-6 py-3 inline-block transition-colors hover:bg-rust rounded-sm">
+        <span class="lang-en">Back to Home</span>
+        <span class="lang-sv">Tillbaka hem</span>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

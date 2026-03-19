@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
@@ -16,7 +17,7 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,16 +28,34 @@ const base = import.meta.env.BASE_URL;
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <link rel="icon" href={`${base}favicon.ico`} />
 
-    <!-- Google Fonts -->
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" type="image/webp" href={`${base}Amaltheahero.webp`} />
+
+    <!-- Google Fonts — 3 families only -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Archivo+Narrow:wght@400;600;700&family=Bebas+Neue&family=Courier+Prime&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <ClientRouter />
   </head>
-  <body class="paper-texture grain-overlay min-h-screen flex flex-col">
-    <Navbar />
-    <main class="flex-1 relative z-10">
+  <body class="paper-texture min-h-screen flex flex-col">
+
+    <div transition:persist="navbar">
+      <Navbar />
+    </div>
+    <main class="flex-1 relative z-10" transition:animate="none">
       <slot />
     </main>
     <Footer />
+
+    <script is:inline>
+      // Language toggle persistence — runs on initial load and after view transitions
+      function applyLang() {
+        const savedLang = localStorage.getItem('amalthea-lang') || 'en';
+        document.documentElement.setAttribute('data-lang', savedLang);
+      }
+      applyLang();
+      document.addEventListener('astro:after-swap', applyLang);
+    </script>
   </body>
 </html>

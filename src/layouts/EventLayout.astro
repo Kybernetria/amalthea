@@ -7,7 +7,6 @@ const base = import.meta.env.BASE_URL;
 
 const dateObj = new Date(frontmatter.date);
 const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
-const monthDay = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toUpperCase();
 const fullDate = dateObj.toLocaleDateString('en-US', {
   weekday: 'long',
   year: 'numeric',
@@ -27,23 +26,22 @@ const typeColor = eventTypeColors[frontmatter.eventType] || 'bg-espresso';
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <article class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+  <article class="max-w-4xl mx-auto px-6 py-20 md:py-28">
     <!-- Back link -->
     <a href={`${base}events/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust mb-8 inline-block">
-      ← All Events
+      ← <span class="lang-en">All Events</span><span class="lang-sv">Alla event</span>
     </a>
 
     <div class="md:flex md:gap-12">
       <!-- Main content -->
       <div class="md:flex-1">
-        <!-- Header -->
         <header class="mb-10">
           <!-- Date display -->
           <div class="flex items-start gap-6 mb-6">
-            <div class="text-center bg-parchment border-2 border-driftwood/30 px-4 py-3 organic-radius paper-inset flex-shrink-0">
-              <p class="typewriter text-xs text-driftwood tracking-widest">{dayName}</p>
-              <p class="font-accent text-4xl text-espresso leading-none">{dateObj.getDate()}</p>
-              <p class="typewriter text-xs text-driftwood">{dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}</p>
+            <div class="text-center bg-parchment border border-driftwood/20 px-4 py-3 rounded-lg paper-inset flex-shrink-0">
+              <p class="font-heading text-xs text-driftwood tracking-widest">{dayName}</p>
+              <p class="font-display font-black text-4xl text-espresso leading-none">{dateObj.getDate()}</p>
+              <p class="font-heading text-xs text-driftwood">{dateObj.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}</p>
             </div>
             <div>
               <span class={`inline-block text-xs font-heading uppercase tracking-wider text-parchment px-3 py-1 rounded-sm mb-3 ${typeColor}`}>
@@ -56,7 +54,7 @@ const typeColor = eventTypeColors[frontmatter.eventType] || 'bg-espresso';
           </div>
 
           <!-- Meta -->
-          <div class="flex flex-wrap gap-x-6 gap-y-2 typewriter text-sm text-driftwood border-t border-b border-driftwood/20 py-4">
+          <div class="flex flex-wrap gap-x-6 gap-y-2 font-heading text-sm text-driftwood border-t border-b border-driftwood/15 py-4 tracking-wide">
             <span>🕐 {frontmatter.startTime}{frontmatter.endTime ? ` – ${frontmatter.endTime}` : ''}</span>
             <span>📍 {frontmatter.location}</span>
             {frontmatter.organizer && <span>👤 {frontmatter.organizer}</span>}
@@ -66,7 +64,7 @@ const typeColor = eventTypeColors[frontmatter.eventType] || 'bg-espresso';
 
         <!-- Event image -->
         {frontmatter.image && (
-          <div class="frame-photo mb-10 overflow-hidden organic-radius">
+          <div class="frame-photo mb-10 overflow-hidden rounded-lg">
             <img src={frontmatter.image} alt="" class="w-full photo-grain" />
           </div>
         )}
@@ -85,41 +83,47 @@ const typeColor = eventTypeColors[frontmatter.eventType] || 'bg-espresso';
 
       <!-- Sidebar -->
       <aside class="md:w-72 mt-12 md:mt-0 flex-shrink-0">
-        <div class="bg-parchment organic-radius paper-inset p-6 border border-driftwood/20 sticky top-24">
-          <h3 class="font-heading font-semibold text-espresso uppercase tracking-wider text-sm mb-4">Details</h3>
-          <dl class="space-y-3 typewriter text-sm">
+        <div class="bg-parchment rounded-lg paper-inset p-6 border border-driftwood/15 sticky top-24">
+          <h3 class="font-heading font-semibold text-espresso uppercase tracking-wider text-sm mb-4">
+            <span class="lang-en">Details</span>
+            <span class="lang-sv">Detaljer</span>
+          </h3>
+          <dl class="space-y-3 font-heading text-sm">
             <div>
-              <dt class="text-driftwood text-xs">Date</dt>
+              <dt class="text-driftwood text-xs tracking-wide"><span class="lang-en">Date</span><span class="lang-sv">Datum</span></dt>
               <dd class="text-espresso">{fullDate}</dd>
             </div>
             <div>
-              <dt class="text-driftwood text-xs">Time</dt>
+              <dt class="text-driftwood text-xs tracking-wide"><span class="lang-en">Time</span><span class="lang-sv">Tid</span></dt>
               <dd class="text-espresso">{frontmatter.startTime}{frontmatter.endTime ? ` – ${frontmatter.endTime}` : ''}</dd>
             </div>
             <div>
-              <dt class="text-driftwood text-xs">Location</dt>
+              <dt class="text-driftwood text-xs tracking-wide"><span class="lang-en">Location</span><span class="lang-sv">Plats</span></dt>
               <dd class="text-espresso">{frontmatter.location}</dd>
             </div>
             {frontmatter.organizer && (
               <div>
-                <dt class="text-driftwood text-xs">Organizer</dt>
+                <dt class="text-driftwood text-xs tracking-wide"><span class="lang-en">Organizer</span><span class="lang-sv">Arrangör</span></dt>
                 <dd class="text-espresso">{frontmatter.organizer}</dd>
               </div>
             )}
           </dl>
 
-          <div class="mt-6 pt-4 border-t border-driftwood/20">
-            <p class="typewriter text-xs text-driftwood mb-2">📍 {siteConfig.address}</p>
-            <p class="typewriter text-xs text-driftwood">Free unless noted. All welcome.</p>
+          <div class="mt-6 pt-4 border-t border-driftwood/15">
+            <p class="font-heading text-xs text-driftwood mb-2">📍 {siteConfig.address}</p>
+            <p class="font-heading text-xs text-driftwood">
+              <span class="lang-en">Free unless noted. All welcome.</span>
+              <span class="lang-sv">Gratis om inget annat anges. Alla välkomna.</span>
+            </p>
           </div>
         </div>
       </aside>
     </div>
 
     <!-- Footer -->
-    <div class="mt-16 pt-8 border-t border-driftwood/30">
+    <div class="mt-16 pt-8 border-t border-driftwood/20">
       <a href={`${base}events/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust">
-        ← Back to all events
+        ← <span class="lang-en">Back to all events</span><span class="lang-sv">Tillbaka till alla event</span>
       </a>
     </div>
   </article>

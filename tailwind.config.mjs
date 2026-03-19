@@ -4,24 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream:     '#EDE4D3',  // warm oat
-        bone:      '#DDD2BF',  // warmer bone
-        espresso:  '#1E1A17',  // deep warm black
-        driftwood: '#5C524A',  // warm brown-grey
-        rust:      '#B83A2A',  // anarchist red, warm
-        mustard:   '#C9943A',  // deep warm gold
-        sage:      '#4A6B4A',  // muted forest green
-        charcoal:  '#2D2926',  // warm near-black
-        parchment: '#F2E8D5',  // warm light paper
-        terracotta:'#A0522D',  // earthy brick
-        ink:       '#1A1614',  // deepest warm black
+        cream:     '#E8DCCA',
+        bone:      '#D4C4AA',
+        espresso:  '#1E1A17',
+        driftwood: '#6B5B4E',
+        rust:      '#B83A2A',
+        mustard:   '#C9943A',
+        sage:      '#4A6B4A',
+        moss:      '#3A5A3A',
+        lichen:    '#6B7F5E',
+        charcoal:  '#2D2926',
+        parchment: '#EDE0CC',
+        terracotta:'#A0522D',
+        ink:       '#1A1614',
+        walnut:    '#3E2E23',
+        amber:     '#B8860B',
+        teak:      '#8B6914',
       },
       fontFamily: {
         display:    ['"Playfair Display"', 'serif'],
         body:       ['"Libre Baskerville"', 'serif'],
-        typewriter: ['"Special Elite"', '"Courier Prime"', 'monospace'],
         heading:    ['"Archivo Narrow"', 'sans-serif'],
-        accent:     ['"Bebas Neue"', 'sans-serif'],
+      },
+      spacing: {
+        '18': '4.5rem',
       },
     },
   },

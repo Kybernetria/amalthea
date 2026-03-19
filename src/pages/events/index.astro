@@ -1,19 +1,77 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventRoll from '../../components/EventRoll.astro';
+import Calendar from '../../components/Calendar.astro';
 ---
 
 <BaseLayout title="Events">
-  <div class="max-w-5xl mx-auto px-6 py-16 md:py-24">
-    <!-- Header -->
+  <div class="max-w-5xl mx-auto px-6 py-20 md:py-28">
     <header class="mb-12">
-      <p class="typewriter text-xs text-driftwood uppercase tracking-[0.2em] mb-3">Gather</p>
+      <p class="font-heading text-xs text-driftwood uppercase tracking-[0.2em] mb-3">
+        <span class="lang-en">Gather</span>
+        <span class="lang-sv">Samlas</span>
+      </p>
       <h1 class="font-display font-black text-espresso text-3xl md:text-4xl mb-4">
-        Events
+        <span class="lang-en">Events</span>
+        <span class="lang-sv">Evenemang</span>
       </h1>
       <div class="w-24 h-1 bg-rust"></div>
     </header>
 
-    <EventRoll />
+    <!-- View toggle -->
+    <div class="flex gap-1 mb-10 border border-driftwood/20 rounded-sm inline-flex">
+      <button id="view-list" class="font-heading text-xs uppercase tracking-wider px-4 py-2 bg-espresso text-parchment transition-colors rounded-sm cursor-pointer">
+        <span class="lang-en">List</span>
+        <span class="lang-sv">Lista</span>
+      </button>
+      <button id="view-calendar" class="font-heading text-xs uppercase tracking-wider px-4 py-2 text-driftwood hover:text-espresso transition-colors rounded-sm cursor-pointer">
+        <span class="lang-en">Calendar</span>
+        <span class="lang-sv">Kalender</span>
+      </button>
+    </div>
+
+    <!-- List view -->
+    <div id="events-list">
+      <EventRoll />
+    </div>
+
+    <!-- Calendar view -->
+    <div id="events-calendar" class="hidden">
+      <Calendar />
+    </div>
   </div>
 </BaseLayout>
+
+<script>
+  function initViewToggle() {
+    const listBtn = document.getElementById('view-list');
+    const calBtn = document.getElementById('view-calendar');
+    const listView = document.getElementById('events-list');
+    const calView = document.getElementById('events-calendar');
+    if (!listBtn || !calBtn || !listView || !calView) return;
+
+    function showList() {
+      listView.classList.remove('hidden');
+      calView.classList.add('hidden');
+      listBtn.classList.add('bg-espresso', 'text-parchment');
+      listBtn.classList.remove('text-driftwood');
+      calBtn.classList.remove('bg-espresso', 'text-parchment');
+      calBtn.classList.add('text-driftwood');
+    }
+
+    function showCalendar() {
+      listView.classList.add('hidden');
+      calView.classList.remove('hidden');
+      calBtn.classList.add('bg-espresso', 'text-parchment');
+      calBtn.classList.remove('text-driftwood');
+      listBtn.classList.remove('bg-espresso', 'text-parchment');
+      listBtn.classList.add('text-driftwood');
+    }
+
+    listBtn.addEventListener('click', showList);
+    calBtn.addEventListener('click', showCalendar);
+  }
+
+  initViewToggle();
+  document.addEventListener('astro:after-swap', initViewToggle);
+</script>

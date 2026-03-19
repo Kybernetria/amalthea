@@ -9,50 +9,45 @@ import BlogRoll from '../components/BlogRoll.astro';
 <BaseLayout>
   <Hero />
   <UpcomingEvents />
+  <hr class="border-t-2 border-mustard/20" />
   <OpeningTimes />
+  <hr class="border-t-2 border-mustard/20" />
   <BlogRoll />
 </BaseLayout>
 
+<style>
+  :global(section.reveal) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  :global(section.reveal.visible) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
 <script>
-  // GSAP scroll reveals — sparingly
-  async function initAnimations() {
-    const { gsap } = await import('gsap');
-    const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Fade-in sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach((section) => {
-      gsap.from(section, {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 85%',
-          once: true,
-        },
-      });
+  function initReveal() {
+    const sections = document.querySelectorAll('main section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    sections.forEach((s, i) => {
+      if (i === 0) return; // Hero always visible
+      s.classList.add('reveal');
+      observer.observe(s);
     });
-
-    // Stagger event cards
-    const cards = document.querySelectorAll('.card-lift');
-    if (cards.length) {
-      gsap.from(cards, {
-        opacity: 0,
-        y: 20,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: cards[0],
-          start: 'top 85%',
-          once: true,
-        },
-      });
-    }
   }
 
-  initAnimations();
+  initReveal();
+  document.addEventListener('astro:after-swap', initReveal);
 </script>

@@ -1,41 +1,35 @@
 ---
 import siteConfig from '../../site-config.json';
+
+const dayNamesSv: Record<string, string> = {
+  Monday: 'Måndag', Tuesday: 'Tisdag', Wednesday: 'Onsdag',
+  Thursday: 'Torsdag', Friday: 'Fredag', Saturday: 'Lördag', Sunday: 'Söndag',
+};
 ---
 
-<section class="py-16 md:py-20 bg-charcoal text-cream relative">
+<section class="py-20 md:py-28 bg-gradient-to-b from-bone/40 to-cream relative">
   <div class="max-w-5xl mx-auto px-6">
     <div class="md:flex md:gap-16 md:items-start">
       <!-- Left: Address & Contact -->
       <div class="md:w-1/2 mb-10 md:mb-0">
-        <h2 class="font-display font-black text-cream text-2xl md:text-3xl mb-6">
-          {siteConfig.name}
+        <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-2">
+          <span class="lang-en">Visit Us</span>
+          <span class="lang-sv">Besök oss</span>
         </h2>
-        <p class="typewriter text-xs text-mustard uppercase tracking-wider mb-4">
-          {siteConfig.description}
-        </p>
-        <div class="space-y-3 typewriter text-sm">
-          <p class="text-cream/80">{siteConfig.address}</p>
-          <a href={`mailto:${siteConfig.email}`} class="block text-cream/70 hover:text-mustard transition-colors">
+        <div class="w-16 h-1 bg-rust mb-6"></div>
+
+        <div class="space-y-3 font-heading text-sm tracking-wide">
+          <p class="text-espresso font-semibold">{siteConfig.address}</p>
+          <a href={`mailto:${siteConfig.email}`} class="block text-driftwood hover:text-rust transition-colors">
             {siteConfig.email}
           </a>
-        </div>
-
-        <!-- Swish support -->
-        <div class="mt-6 bg-cream/5 border border-cream/10 rounded-sm p-4">
-          <p class="typewriter text-sm text-mustard mb-1">🚩 Stötta Amalthea?</p>
-          <p class="typewriter text-lg text-cream">Swish till {siteConfig.swish}</p>
         </div>
 
         <!-- Social links -->
         <div class="flex gap-4 mt-6">
           {siteConfig.socials.instagram && (
-            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/50 hover:text-mustard transition-colors typewriter text-xs uppercase tracking-wider">
+            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-driftwood hover:text-rust transition-colors font-heading text-xs uppercase tracking-wider">
               Instagram
-            </a>
-          )}
-          {siteConfig.socials.mastodon && (
-            <a href={siteConfig.socials.mastodon} target="_blank" rel="noopener noreferrer me" class="text-cream/50 hover:text-mustard transition-colors typewriter text-xs uppercase tracking-wider">
-              Mastodon
             </a>
           )}
         </div>
@@ -43,16 +37,25 @@ import siteConfig from '../../site-config.json';
 
       <!-- Right: Hours Grid -->
       <div class="md:w-1/2">
-        <h3 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/60 mb-4">
-          Öppettider
+        <h3 class="font-heading font-semibold uppercase tracking-wider text-sm text-driftwood mb-4">
+          <span class="lang-en">Opening Hours</span>
+          <span class="lang-sv">Öppettider</span>
         </h3>
         <div class="space-y-2">
           {siteConfig.hours.map((h: any) => (
-            <div class="flex justify-between typewriter text-sm border-b border-cream/10 pb-2">
-              <span class="text-cream/70">{h.day}</span>
-              <span class={h.status === 'open' ? 'text-cream' : 'text-cream/30'}>
-                {h.status === 'open' ? `${h.hours}${h.note ? ` ${h.note}` : ''}` : 'Stängt'}
+            <div class="flex justify-between font-heading text-sm border-b border-driftwood/10 pb-2">
+              <span class="text-driftwood">
+                <span class="lang-en">{h.day}</span>
+                <span class="lang-sv">{dayNamesSv[h.day] || h.day}</span>
               </span>
+              {h.status === 'open' ? (
+                <span class="text-espresso font-semibold">{h.hours}{h.note ? ` ${h.note}` : ''}</span>
+              ) : (
+                <span class="text-driftwood/40">
+                  <span class="lang-en">Closed</span>
+                  <span class="lang-sv">Stängt</span>
+                </span>
+              )}
             </div>
           ))}
         </div>

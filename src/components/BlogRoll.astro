@@ -12,9 +12,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <!-- Section header -->
     <div class="mb-12">
       <h2 class="font-display font-black text-espresso text-3xl md:text-4xl inline-block">
-        From the Shelf
+        <span class="lang-en">From the Shelf</span>
+        <span class="lang-sv">Från hyllan</span>
       </h2>
-      <div class="w-24 h-1 bg-rust mt-3"></div>
+      <div class="w-24 h-1 bg-rust"></div>
     </div>
 
     <!-- Posts grid -->
@@ -27,22 +28,22 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         });
         return (
           <a href={`${base}writing/${post.id}/`} class="block group">
-            <article class="bg-parchment organic-radius paper-inset p-6 h-full flex flex-col card-lift">
+            <article class="bg-parchment rounded-lg p-6 h-full flex flex-col card-lift">
               {/* Hero image */}
               {post.data.heroImage && (
-                <div class="mb-4 overflow-hidden organic-radius-alt border-2 border-driftwood/30">
+                <div class="mb-4 overflow-hidden rounded-lg border border-driftwood/20">
                   <img src={post.data.heroImage} alt="" class="w-full aspect-video object-cover photo-grain" />
                 </div>
               )}
 
               {/* Date */}
-              <p class="typewriter text-xs text-driftwood mb-2 tracking-wider">{dateStr}</p>
+              <p class="font-heading text-xs text-driftwood mb-2 tracking-wider">{dateStr}</p>
 
               {/* Tags */}
               {post.data.tags && post.data.tags.length > 0 && (
                 <div class="flex flex-wrap gap-1.5 mb-3">
                   {post.data.tags.map((tag: string) => (
-                    <span class="text-[0.65rem] font-heading uppercase tracking-wider border border-rust/50 text-rust px-1.5 py-0.5 rounded-sm">
+                    <span class="text-[0.65rem] font-heading uppercase tracking-wider border border-rust/40 text-rust px-1.5 py-0.5 rounded-sm">
                       {tag}
                     </span>
                   ))}
@@ -59,9 +60,10 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
                 {post.data.excerpt}
               </p>
 
-              {/* Read link */}
-              <span class="mt-4 text-rust text-sm font-heading uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-                Read →
+              {/* Read link — always visible */}
+              <span class="mt-4 text-rust text-sm font-heading uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+                <span class="lang-en">Read →</span>
+                <span class="lang-sv">Läs →</span>
               </span>
             </article>
           </a>
@@ -72,7 +74,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     {/* View all link */}
     <div class="text-center mt-12">
       <a href={`${base}writing/`} class="link-slide font-heading font-semibold uppercase text-sm tracking-wider text-rust inline-flex items-center gap-2">
-        All Writing
+        <span class="lang-en">All Writing</span>
+        <span class="lang-sv">Alla texter</span>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>

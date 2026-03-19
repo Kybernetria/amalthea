@@ -12,15 +12,15 @@ const dateStr = new Date(frontmatter.date).toLocaleDateString('en-US', {
 ---
 
 <BaseLayout title={frontmatter.title}>
-  <article class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+  <article class="max-w-3xl mx-auto px-6 py-20 md:py-28">
     <!-- Back link -->
     <a href={`${base}writing/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust mb-8 inline-block">
-      ← All Writing
+      ← <span class="lang-en">All Writing</span><span class="lang-sv">Alla texter</span>
     </a>
 
     <!-- Header -->
     <header class="mb-12">
-      <p class="typewriter text-xs text-driftwood mb-3 uppercase tracking-widest">
+      <p class="font-heading text-xs text-driftwood mb-3 uppercase tracking-widest">
         {dateStr}
       </p>
       <h1 class="font-display font-black text-espresso leading-tight mb-6" style="font-size: clamp(2rem, 5vw, 3.5rem);">
@@ -29,7 +29,7 @@ const dateStr = new Date(frontmatter.date).toLocaleDateString('en-US', {
       {frontmatter.tags && frontmatter.tags.length > 0 && (
         <div class="flex flex-wrap gap-2">
           {frontmatter.tags.map((tag: string) => (
-            <span class="text-xs font-heading uppercase tracking-wider border border-rust text-rust px-2 py-0.5 rounded-sm">
+            <span class="text-xs font-heading uppercase tracking-wider border border-rust/40 text-rust px-2 py-0.5 rounded-sm">
               {tag}
             </span>
           ))}
@@ -39,7 +39,7 @@ const dateStr = new Date(frontmatter.date).toLocaleDateString('en-US', {
 
     <!-- Hero image -->
     {frontmatter.heroImage && (
-      <div class="frame-photo mb-12 overflow-hidden organic-radius">
+      <div class="frame-photo mb-12 overflow-hidden rounded-lg">
         <img src={frontmatter.heroImage} alt="" class="w-full photo-grain" />
       </div>
     )}
@@ -58,9 +58,9 @@ const dateStr = new Date(frontmatter.date).toLocaleDateString('en-US', {
     </div>
 
     <!-- Footer divider -->
-    <div class="mt-16 pt-8 border-t border-driftwood/30">
+    <div class="mt-16 pt-8 border-t border-driftwood/20">
       <a href={`${base}writing/`} class="link-slide font-heading uppercase text-sm tracking-wider text-rust">
-        ← Back to all writing
+        ← <span class="lang-en">Back to all writing</span><span class="lang-sv">Tillbaka till alla texter</span>
       </a>
     </div>
   </article>

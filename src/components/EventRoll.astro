@@ -22,9 +22,15 @@ const eventTypeColors: Record<string, string> = {
     const typeColor = eventTypeColors[event.data.eventType] || 'bg-espresso';
     return (
       <a href={`${base}events/${event.id}/`} class="block group">
-        <article class="bg-parchment paper-inset organic-radius border-l-4 border-l-rust p-6 h-full flex flex-col card-lift corner-fold relative">
+        <article class="bg-parchment rounded-lg border-l-4 border-l-rust p-6 h-full flex flex-col card-lift relative overflow-hidden">
+          {/* Event image */}
+          {event.data.image && (
+            <div class="mb-4 -mx-6 -mt-6">
+              <img src={event.data.image} alt="" class="w-full h-36 object-cover photo-grain" />
+            </div>
+          )}
           {/* Date */}
-          <p class="typewriter text-xs text-driftwood tracking-wider mb-2">{dayStr}</p>
+          <p class="font-heading text-xs text-driftwood tracking-wider mb-2">{dayStr}</p>
 
           {/* Title */}
           <h3 class="font-heading font-semibold text-espresso text-lg mb-2 group-hover:text-rust transition-colors leading-snug">
@@ -32,7 +38,7 @@ const eventTypeColors: Record<string, string> = {
           </h3>
 
           {/* Time + Location */}
-          <p class="typewriter text-xs text-driftwood mb-3">
+          <p class="font-heading text-xs text-driftwood mb-3 tracking-wide">
             {event.data.startTime}{event.data.endTime ? ` – ${event.data.endTime}` : ''} · {event.data.location}
           </p>
 

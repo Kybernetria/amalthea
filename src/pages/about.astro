@@ -4,19 +4,20 @@ import siteConfig from '../../site-config.json';
 ---
 
 <BaseLayout title="About">
-  <div class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+  <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
 
     <!-- Header -->
     <header class="mb-16">
-      <p class="typewriter text-xs text-driftwood uppercase tracking-[0.2em] mb-3">Om oss</p>
+      <p class="font-heading text-xs text-driftwood uppercase tracking-[0.2em] mb-3">
+        <span class="lang-en">About Us</span>
+        <span class="lang-sv">Om oss</span>
+      </p>
       <h1 class="font-display font-black text-espresso leading-tight mb-6" style="font-size: clamp(2.5rem, 5vw, 4rem);">
         Amalthea Bokkafé
       </h1>
       <p class="font-body italic text-driftwood text-lg mb-4">
-        Malmö radical bookstore // Radikalt bokkafé i Malmö
-      </p>
-      <p class="typewriter text-xs text-rust uppercase tracking-wider mb-6">
-        {siteConfig.description}
+        <span class="lang-en">Radical bookstore and community café in Malmö.</span>
+        <span class="lang-sv">Radikalt bokkafé i Malmö.</span>
       </p>
       <div class="w-24 h-1 bg-rust"></div>
     </header>
@@ -24,60 +25,100 @@ import siteConfig from '../../site-config.json';
     <!-- Our Story -->
     <section class="prose-dropcap mb-20">
       <div class="font-body text-driftwood leading-relaxed space-y-6 text-base">
-        <p>
-          Amalthea Bokkafé is a nonprofit radical bookstore and community café in Malmö, Sweden. We carry books, zines, and literature on radical politics, labor history, feminism, anti-racism, ecology, and everything in between.
-        </p>
-        <p>
-          We're a gathering place — for reading groups, film screenings, workshops, and conversations. On Thursdays we serve soup. On weekends we pour coffee. Every day we try to build something that matters.
-        </p>
-        <p>
-          Named after the ship <em>Amalthea</em>, whose history is woven into the story of workers' struggle in Sweden, this space carries that spirit forward: solidarity, mutual aid, and a belief that another world is not only possible but necessary.
-        </p>
+        <div class="lang-en">
+          <p>
+            Amalthea Bokkafé is a nonprofit radical bookstore and community café in Malmö, Sweden. We carry books, zines, and literature on radical politics, labor history, feminism, anti-racism, ecology, and everything in between.
+          </p>
+          <p class="mt-6">
+            We're a gathering place — for reading groups, film screenings, workshops, and conversations. On Thursdays we serve soup. On weekends we pour coffee. Every day we try to build something that matters.
+          </p>
+          <p class="mt-6">
+            Named after the ship <em>Amalthea</em>, whose history is woven into the story of workers' struggle in Sweden, this space carries that spirit forward: solidarity, mutual aid, and a belief that another world is not only possible but necessary.
+          </p>
+        </div>
+        <div class="lang-sv">
+          <p>
+            Amalthea Bokkafé är en ideell radikal bokhandel och mötesplats i Malmö. Vi har böcker, zines och litteratur om radikal politik, arbetarhistoria, feminism, antirasism, ekologi och allt däremellan.
+          </p>
+          <p class="mt-6">
+            Vi är en samlingsplats — för läsecirklar, filmvisningar, workshops och samtal. På torsdagar serverar vi soppa. På helgerna brygger vi kaffe. Varje dag försöker vi bygga något som betyder något.
+          </p>
+          <p class="mt-6">
+            Uppkallad efter fartyget <em>Amalthea</em>, vars historia är sammanvävd med berättelsen om arbetarkampen i Sverige, bär det här rummet den andan vidare: solidaritet, ömsesidig hjälp och en övertygelse om att en annan värld inte bara är möjlig utan nödvändig.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- The Space -->
     <section class="mb-20">
-      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-8">Rummet</h2>
+      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-2">
+        <span class="lang-en">The Space</span>
+        <span class="lang-sv">Rummet</span>
+      </h2>
+      <div class="w-16 h-1 bg-rust mb-6"></div>
       <div class="font-body text-driftwood leading-relaxed space-y-4 text-base">
-        <p>
-          You'll find us at <strong class="text-espresso">{siteConfig.address}</strong>. The shelves hold a curated collection of radical theory, poetry, fiction, children's books, and a rotating selection of zines from local makers.
-        </p>
-        <p>
-          The space is open for community use — reading groups, workshops, film screenings, meetings. If you have an idea for an event, get in touch.
-        </p>
+        <div class="lang-en">
+          <p>
+            You'll find us at <strong class="text-espresso">{siteConfig.address}</strong>. The shelves hold a curated collection of radical theory, poetry, fiction, children's books, and a rotating selection of zines from local makers.
+          </p>
+          <p class="mt-4">
+            The space is open for community use — reading groups, workshops, film screenings, meetings. If you have an idea for an event, get in touch.
+          </p>
+        </div>
+        <div class="lang-sv">
+          <p>
+            Du hittar oss på <strong class="text-espresso">{siteConfig.address}</strong>. Hyllorna rymmer ett kurerat urval av radikal teori, poesi, skönlitteratur, barnböcker och ett roterande utbud av zines från lokala skapare.
+          </p>
+          <p class="mt-4">
+            Rummet är öppet för gemenskapen — läsecirklar, workshops, filmvisningar, möten. Har du en idé till ett evenemang? Hör av dig.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Support -->
-    <section class="bg-charcoal text-cream organic-radius p-8 md:p-12 mb-20">
-      <h2 class="font-display font-black text-cream text-2xl md:text-3xl mb-6">Stötta Amalthea</h2>
+    <section class="bg-charcoal text-cream rounded-lg p-8 md:p-12 mb-20">
+      <h2 class="font-display font-black text-cream text-2xl md:text-3xl mb-6">
+        <span class="lang-en">Support Amalthea</span>
+        <span class="lang-sv">Stötta Amalthea</span>
+      </h2>
       <div class="font-body text-cream/70 leading-relaxed space-y-4 text-base">
         <p>
-          Amalthea is a nonprofit. We keep the doors open through book sales, event donations, and the generosity of our community. Every contribution matters.
+          <span class="lang-en">Amalthea is a nonprofit. We keep the doors open through book sales, event donations, and the generosity of our community. Every contribution matters.</span>
+          <span class="lang-sv">Amalthea är en ideell förening. Vi håller dörrarna öppna genom bokförsäljning, eventdonationer och vår gemenskaps generositet. Varje bidrag spelar roll.</span>
         </p>
         <div class="bg-cream/5 border border-cream/15 rounded-sm p-6 mt-6">
-          <p class="typewriter text-lg text-mustard mb-2">🚩 Swish till {siteConfig.swish}</p>
-          <p class="typewriter text-sm text-cream/50">Varje krona hjälper oss hålla dörrarna öppna.</p>
+          <p class="font-heading text-lg text-mustard mb-2">🚩 Swish {siteConfig.swish}</p>
+          <p class="font-heading text-sm text-cream/60">
+            <span class="lang-en">Every krona helps us keep the doors open.</span>
+            <span class="lang-sv">Varje krona hjälper oss hålla dörrarna öppna.</span>
+          </p>
         </div>
       </div>
     </section>
 
     <!-- Get Involved -->
-    <section class="bg-bone organic-radius-alt paper-inset p-8 md:p-12">
-      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-6">Engagera dig</h2>
+    <section class="mb-0">
+      <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-6">
+        <span class="lang-en">Get Involved</span>
+        <span class="lang-sv">Engagera dig</span>
+      </h2>
       <div class="font-body text-driftwood leading-relaxed space-y-4 text-base">
         <p>
-          There are many ways to be part of the project:
+          <span class="lang-en">There are many ways to be part of the project:</span>
+          <span class="lang-sv">Det finns många sätt att vara en del av projektet:</span>
         </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong class="text-espresso">Volontär</strong> — help with events, shelving, the café, or the newsletter</li>
-          <li><strong class="text-espresso">Donera</strong> — Swish till {siteConfig.swish}</li>
-          <li><strong class="text-espresso">Föreslå event</strong> — the space is open for community use</li>
-          <li><strong class="text-espresso">Sprid ordet</strong> — tell your friends, neighbors, coworkers</li>
+          <li><strong class="text-espresso"><span class="lang-en">Volunteer</span><span class="lang-sv">Volontär</span></strong> — <span class="lang-en">help with events, shelving, the café, or the newsletter</span><span class="lang-sv">hjälp med evenemang, bokhyllan, kaféet eller nyhetsbrevet</span></li>
+          <li><strong class="text-espresso"><span class="lang-en">Donate</span><span class="lang-sv">Donera</span></strong> — Swish {siteConfig.swish}</li>
+          <li><strong class="text-espresso"><span class="lang-en">Suggest an event</span><span class="lang-sv">Föreslå event</span></strong> — <span class="lang-en">the space is open for community use</span><span class="lang-sv">rummet är öppet för gemenskapen</span></li>
+          <li><strong class="text-espresso"><span class="lang-en">Spread the word</span><span class="lang-sv">Sprid ordet</span></strong> — <span class="lang-en">tell your friends, neighbors, coworkers</span><span class="lang-sv">berätta för vänner, grannar, kollegor</span></li>
         </ul>
         <p>
-          Drop by the shop or email us at <a href={`mailto:${siteConfig.email}`} class="text-rust underline underline-offset-2">{siteConfig.email}</a>.
+          <span class="lang-en">Drop by the shop or email us at</span>
+          <span class="lang-sv">Kom förbi eller maila oss på</span>
+          <a href={`mailto:${siteConfig.email}`} class="text-rust underline underline-offset-2">{siteConfig.email}</a>.
         </p>
       </div>
     </section>

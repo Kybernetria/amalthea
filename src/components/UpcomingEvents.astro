@@ -9,7 +9,6 @@ const upcomingEvents = allEvents
   .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime())
   .slice(0, 4);
 
-// If no future events, show the most recent ones
 const events = upcomingEvents.length > 0
   ? upcomingEvents
   : allEvents.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).slice(0, 4);
@@ -24,27 +23,34 @@ const eventTypeColors: Record<string, string> = {
 };
 ---
 
-<section class="py-20 md:py-28 bg-bone relative">
+<section class="py-20 md:py-28 bg-gradient-to-b from-cream to-bone/40 relative">
   <div class="max-w-7xl mx-auto px-6">
     <div class="lg:flex lg:gap-12">
       <!-- Left label -->
       <div class="lg:w-[200px] flex-shrink-0 mb-10 lg:mb-0 lg:relative">
         <div class="lg:sticky lg:top-28">
           <h2 class="font-display font-black text-espresso text-4xl md:text-5xl lg:text-6xl lg:[writing-mode:vertical-lr] lg:rotate-180 leading-none tracking-tight">
-            Upcoming
+            <span class="lang-en">Upcoming</span>
+            <span class="lang-sv">Kommande</span>
           </h2>
         </div>
       </div>
 
       <!-- Events stack -->
-      <div class="flex-1 space-y-6">
+      <div class="flex-1 space-y-5">
         {events.map((event) => {
           const d = new Date(event.data.date);
           const dayStr = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
           const typeColor = eventTypeColors[event.data.eventType] || 'bg-espresso';
           return (
             <a href={`${base}events/${event.id}/`} class="block group">
-              <article class="bg-parchment paper-inset organic-radius border-l-4 border-t border-l-rust border-t-driftwood/25 border-dashed p-6 md:p-8 card-lift corner-fold relative">
+              <article class="bg-parchment rounded-lg border-l-4 border-l-rust p-6 md:p-8 card-lift relative overflow-hidden">
+                {/* Event image */}
+                {event.data.image && (
+                  <div class="mb-4 -mx-6 md:-mx-8 -mt-6 md:-mt-8">
+                    <img src={event.data.image} alt="" class="w-full h-40 object-cover photo-grain" />
+                  </div>
+                )}
                 <!-- Date -->
                 <div class="flex items-center gap-2 mb-3">
                   <svg class="w-4 h-4 text-driftwood" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -53,7 +59,7 @@ const eventTypeColors: Record<string, string> = {
                     <line x1="8" y1="2" x2="8" y2="6"></line>
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  <span class="typewriter text-xs text-driftwood tracking-wider">{dayStr}</span>
+                  <span class="font-heading text-xs text-driftwood tracking-wider">{dayStr}</span>
                 </div>
 
                 <!-- Title -->
@@ -62,7 +68,7 @@ const eventTypeColors: Record<string, string> = {
                 </h3>
 
                 <!-- Time + Location -->
-                <p class="typewriter text-xs text-driftwood mb-3">
+                <p class="font-heading text-xs text-driftwood mb-3 tracking-wide">
                   {event.data.startTime}{event.data.endTime ? ` – ${event.data.endTime}` : ''} · {event.data.location}
                 </p>
 
@@ -80,10 +86,11 @@ const eventTypeColors: Record<string, string> = {
           );
         })}
 
-        <!-- View calendar link -->
+        <!-- View all events link -->
         <div class="text-center pt-4">
-          <a href={`${base}calendar/`} class="link-slide font-heading font-semibold uppercase text-sm tracking-wider text-rust inline-flex items-center gap-2">
-            View Calendar
+          <a href={`${base}events/`} class="link-slide font-heading font-semibold uppercase text-sm tracking-wider text-rust inline-flex items-center gap-2">
+            <span class="lang-en">All Events</span>
+            <span class="lang-sv">Alla event</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
