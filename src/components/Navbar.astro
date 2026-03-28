@@ -24,7 +24,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-18">
     <!-- Logo -->
     <a href={base} class="flex items-center">
-      <span class="font-display font-black text-espresso text-[18px] md:text-[21px] tracking-tight">{siteConfig.name}</span>
+      <span class="font-display font-black text-espresso text-[18px] md:text-[25px] tracking-tight">{siteConfig.name}</span>
     </a>
 
     <!-- Desktop Nav -->
@@ -40,27 +40,27 @@ const navLinks = [
     <!-- Right side: lang toggle + hours -->
     <div class="hidden lg:flex items-center gap-3">
       <!-- Language toggle -->
-      <button id="lang-toggle" class="font-heading text-[14px] tracking-wider text-driftwood border border-driftwood/30 px-2.5 py-1.5 rounded-sm hover:border-rust/50 hover:text-rust transition-colors cursor-pointer">
+      <button id="lang-toggle" class="font-heading text-xs tracking-wider text-driftwood border border-driftwood/30 px-2.5 py-1.5 rounded-sm hover:border-rust/50 hover:text-rust transition-colors cursor-pointer">
         <span class="lang-en">Svenska</span>
         <span class="lang-sv">English</span>
       </button>
 
       <!-- Hours pill — hover to expand -->
       <div class="relative group">
-        <div class="font-heading text-[14px] text-espresso bg-bone border border-driftwood/20 px-3 py-1.5 rounded-sm tracking-wide cursor-default">
+        <div class="font-heading text-xs text-espresso bg-bone border border-driftwood/20 px-3 py-1.5 rounded-sm tracking-wide cursor-default">
           <span class="lang-en">{todayStatusEn}</span>
           <span class="lang-sv">{todayStatusSv}</span>
         </div>
 
         <!-- Hours popover — shows on hover -->
         <div class="absolute right-0 top-full mt-2 bg-parchment border border-driftwood/20 p-6 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 w-96">
-          <h4 class="font-heading font-semibold uppercase text-[15px] tracking-wider text-espresso mb-4">
+          <h4 class="font-heading font-semibold uppercase text-xs tracking-wider text-espresso mb-4">
             <span class="lang-en">Opening Hours</span>
             <span class="lang-sv">Öppettider</span>
           </h4>
           <div class="space-y-2">
             {siteConfig.hours.map((h: any) => (
-              <div class="flex justify-between font-heading text-[15px]">
+              <div class="flex justify-between font-heading text-xs">
                 <span class="text-driftwood">
                   <span class="lang-en">{h.day}</span>
                   <span class="lang-sv">{dayNamesSv[h.day] || h.day}</span>
