@@ -13,31 +13,31 @@ const currentYear = new Date().getFullYear();
 
       <!-- Col 1: Identity + Support -->
       <div>
-        <h3 class="font-display font-black text-cream text-2xl mb-2">
+        <h3 class="font-display font-black text-cream text-3xl md:text-4xl mb-2">
           {siteConfig.name}
         </h3>
-        <p class="font-heading text-xs text-mustard uppercase tracking-wider mb-4">
+        <p class="font-heading text-sm md:text-base text-mustard uppercase tracking-wider mb-4">
           <span class="lang-en">{siteConfig.taglineEn || 'Radical bookstore in Malmö'}</span>
           <span class="lang-sv">{siteConfig.tagline}</span>
         </p>
-        <p class="font-heading text-xs text-cream/50 mb-6 tracking-wide">
+        <p class="font-heading text-sm md:text-base text-cream/50 mb-6 tracking-wide">
           {siteConfig.address}
         </p>
 
         <!-- Swish -->
         <div class="bg-cream/5 border border-cream/10 rounded-sm p-4 inline-block">
-          <p class="font-heading text-xs text-cream/50 mb-1">
+          <p class="font-heading text-sm md:text-base text-cream/50 mb-1">
             <span class="lang-en">🚩 Support Amalthea</span>
             <span class="lang-sv">🚩 Stötta Amalthea</span>
           </p>
-          <p class="font-heading text-sm text-mustard">Swish {siteConfig.swish}</p>
+          <p class="font-heading text-base md:text-lg text-mustard">Swish {siteConfig.swish}</p>
         </div>
       </div>
 
       <!-- Col 2: Navigation + Contact -->
       <div class="md:flex md:gap-12">
         <div class="mb-8 md:mb-0">
-          <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
+          <h4 class="font-heading font-semibold uppercase tracking-wider text-base md:text-lg text-cream/40 mb-4">
             <span class="lang-en">Navigate</span>
             <span class="lang-sv">Navigera</span>
           </h4>
@@ -47,7 +47,7 @@ const currentYear = new Date().getFullYear();
               { en: 'Writing', sv: 'Texter', href: `${base}writing/` },
               { en: 'About', sv: 'Om oss', href: `${base}about/` },
             ].map(link => (
-              <a href={link.href} class="block font-heading text-sm text-cream/60 hover:text-mustard transition-colors tracking-wide">
+              <a href={link.href} class="block font-heading text-base md:text-lg text-cream/60 hover:text-mustard transition-colors tracking-wide">
                 <span class="lang-en">{link.en}</span>
                 <span class="lang-sv">{link.sv}</span>
               </a>
@@ -56,21 +56,21 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <div>
-          <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-4">
+          <h4 class="font-heading font-semibold uppercase tracking-wider text-base md:text-lg text-cream/40 mb-4">
             <span class="lang-en">Contact</span>
             <span class="lang-sv">Kontakt</span>
           </h4>
-          <a href={`mailto:${siteConfig.email}`} class="block font-heading text-sm text-cream/60 hover:text-mustard transition-colors mb-4 tracking-wide">
+          <a href={`mailto:${siteConfig.email}`} class="block font-heading text-base md:text-lg text-cream/60 hover:text-mustard transition-colors mb-4 tracking-wide">
             {siteConfig.email}
           </a>
           <div class="flex gap-4">
             {siteConfig.socials.instagram && (
               <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Instagram">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
+                <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
               </a>
             )}
             <a href={`mailto:${siteConfig.email}`} class="text-cream/40 hover:text-mustard transition-colors" aria-label="Email">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 7L2 7"></path></svg>
+              <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 7L2 7"></path></svg>
             </a>
           </div>
         </div>
@@ -82,10 +82,10 @@ const currentYear = new Date().getFullYear();
   <!-- Bottom bar -->
   <div class="border-t border-cream/8">
     <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-      <p class="font-heading text-xs text-cream/25 tracking-wide">
+      <p class="font-heading text-sm md:text-base text-cream/25 tracking-wide">
         © {currentYear} {siteConfig.name} · CC BY-SA 4.0
       </p>
-      <span class="font-heading text-xs text-cream/25 uppercase tracking-widest">
+      <span class="font-heading text-sm md:text-base text-cream/25 uppercase tracking-widest">
         <span class="lang-en">Solidarity every day</span>
         <span class="lang-sv">Solidaritet varje dag</span>
       </span>
