@@ -10,12 +10,12 @@ const base = import.meta.env.BASE_URL;
     <img
       src={`${base}heronew.png`}
       alt="Amalthea Bokkafé interior"
-      class="w-full md:w-2/3 h-full max-h-[90dvh] object-contain translate-y-[-5%] md:translate-x-[15%] md:translate-y-[4%] relative z-10"
+      class="w-full md:w-2/3 h-full max-h-[90dvh] object-contain translate-y-[-5%] md:translate-x-[15%] md:translate-y-[4%]"
       loading="eager"
       fetchpriority="high"
     />
     <!-- Book spine and shadow effect - full width -->
-    <div class="absolute inset-0 flex pointer-events-none z-0">
+    <div class="absolute inset-0 flex pointer-events-none">
       <!-- Left page shadow (curves into spine) -->
       <div class="flex-1 bg-gradient-to-r from-charcoal/[0.02] via-charcoal/8 to-charcoal/15"></div>
       <!-- Spine line with depth -->
