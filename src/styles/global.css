@@ -187,13 +187,13 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-/* Top line: becomes left leg \ of A */
+/* Top line: becomes left leg \ of A, pivots at top-right corner */
 #mobile-menu-btn .hamburger-top {
-  transform-origin: right center;
+  transform-origin: right top;
 }
 
 #mobile-menu-btn.active .hamburger-top {
-  transform: rotate(-40deg);
+  transform: rotate(35deg);
   width: 1.25rem;
 }
 
@@ -207,13 +207,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 1rem;
 }
 
-/* Bottom line: becomes right leg / of A */
+/* Bottom line: becomes right leg / of A, pivots at top-left corner */
 #mobile-menu-btn .hamburger-bot {
-  transform-origin: left center;
+  transform-origin: left top;
 }
 
 #mobile-menu-btn.active .hamburger-bot {
-  transform: rotate(40deg);
+  transform: rotate(-35deg);
   width: 1.25rem;
 }
 
