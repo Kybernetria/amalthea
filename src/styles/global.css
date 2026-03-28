@@ -183,43 +183,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Hamburger to A animation */
-#mobile-menu-btn .hamburger-a-line {
-  position: relative;
+#mobile-menu-btn {
+  transition: gap 300ms ease;
 }
 
-/* Top line: becomes left leg \ of A, pivots at top-right corner */
-#mobile-menu-btn .hamburger-top {
-  transform-origin: right top;
+.hamburger-top, .hamburger-mid, .hamburger-bot {
+  display: block;
+  transition: transform 300ms ease, width 300ms ease;
 }
+
+#mobile-menu-btn.active { gap: 0; }
 
 #mobile-menu-btn.active .hamburger-top {
-  transform: rotate(50deg);
-  width: 1.4rem;
-}
-
-/* Middle line: crossbar of A */
-#mobile-menu-btn .hamburger-mid {
-  transform-origin: center center;
+  transform: translate(-3.5px, 1px) rotate(-70deg);
+  width: 1.25rem;
 }
 
 #mobile-menu-btn.active .hamburger-mid {
-  transform: translateY(4px);
-  width: 1rem;
-}
-
-/* Bottom line: becomes right leg / of A, pivots at top-left corner */
-#mobile-menu-btn .hamburger-bot {
-  transform-origin: left top;
+  transform: translateY(2px);
+  width: 0.5625rem; /* 9px */
 }
 
 #mobile-menu-btn.active .hamburger-bot {
-  transform: rotate(-50deg);
-  width: 1.4rem;
-}
-
-/* Collapse gap between lines when active */
-#mobile-menu-btn.active {
-  gap: 0;
+  transform: translate(3.5px, -3px) rotate(70deg);
+  width: 1.25rem;
 }
 
 /* Event type colors */
