@@ -54,21 +54,21 @@ const navLinks = [
 
         <!-- Hours popover — shows on hover -->
         <div class="absolute right-0 top-full mt-2 bg-parchment border border-driftwood/20 p-6 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 w-96">
-          <h4 class="font-heading font-semibold uppercase text-[15px] tracking-wider text-espresso mb-4">
+          <h4 class="font-heading font-bold uppercase text-base tracking-wider text-espresso mb-4">
             <span class="lang-en">Opening Hours</span>
             <span class="lang-sv">Öppettider</span>
           </h4>
           <div class="space-y-2.5">
             {siteConfig.hours.map((h: any) => (
-              <div class="flex justify-between font-heading text-[14px]">
-                <span class="text-espresso">
+              <div class="flex justify-between font-heading text-[15px]">
+                <span class="text-espresso font-medium">
                   <span class="lang-en">{h.day}</span>
                   <span class="lang-sv">{dayNamesSv[h.day] || h.day}</span>
                 </span>
                 {h.status === 'open' ? (
-                  <span class="text-espresso font-semibold">{h.hours}{h.note ? ` ${h.note}` : ''}</span>
+                  <span class="text-espresso font-bold">{h.hours}{h.note ? ` ${h.note}` : ''}</span>
                 ) : (
-                  <span class="text-driftwood">
+                  <span class="text-driftwood font-medium">
                     <span class="lang-en">Closed</span>
                     <span class="lang-sv">Stängt</span>
                   </span>
@@ -76,7 +76,7 @@ const navLinks = [
               </div>
             ))}
           </div>
-          <div class="mt-4 pt-3 border-t border-driftwood/20 font-heading text-[14px] text-driftwood">
+          <div class="mt-4 pt-3 border-t border-driftwood/20 font-heading text-[15px] text-driftwood font-medium">
             {siteConfig.address}
           </div>
         </div>
