@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Scrollbar styling - overlay, no track visible */
 html {
   scrollbar-width: thin;
-  scrollbar-color: var(--driftwood) transparent;
+  scrollbar-color: var(--driftwood) var(--charcoal);
 }
 
 ::-webkit-scrollbar {
