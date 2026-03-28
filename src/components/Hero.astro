@@ -5,55 +5,53 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <section class="relative min-h-[90dvh] flex items-end overflow-hidden bg-charcoal">
-  <!-- Background image with picture element -->
-  <div class="absolute inset-0">
-    <picture>
-      <source
-        srcset={`${base}Amaltheahero-960.webp`}
-        media="(max-width: 768px)"
-        type="image/webp"
-      />
-      <source
-        srcset={`${base}Amaltheahero.webp`}
-        type="image/webp"
-      />
-      <source
-        srcset={`${base}Amaltheahero-960.jpg`}
-        media="(max-width: 768px)"
-        type="image/jpeg"
-      />
-      <img
-        src={`${base}Amaltheahero.jpg`}
-        alt="Amalthea Bokkafé interior"
-        class="w-full h-full object-cover opacity-45"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </picture>
-    <div class="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/60 to-charcoal/20"></div>
+  <!-- Background: centered image with white sides -->
+  <div class="absolute inset-0 bg-white flex items-center justify-center">
+    <img
+      src={`${base}heronew.png`}
+      alt="Amalthea Bokkafé interior"
+      class="w-full md:w-2/3 h-full max-h-[90dvh] object-contain md:translate-x-[15%] md:translate-y-[4%]"
+      loading="eager"
+      fetchpriority="high"
+    />
   </div>
 
-  <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 md:pb-24 pt-32 w-full">
-    <div class="max-w-xl">
+  <!-- Gradient overlay for text readability -->
+  <div class="absolute inset-0 bg-gradient-to-r from-charcoal md:via-charcoal/60 to-transparent"></div>
+
+  <!-- Open/Closed indicator - below header on mobile, above logo on desktop -->
+  <div class="absolute top-20 md:top-24 left-0 right-0 z-20">
+    <div id="hero-open-status" class="text-center">
+      <span class="inline-block bg-charcoal/80 text-white font-heading text-sm font-bold px-4 py-2 tracking-wider rounded-sm">
+        <span class="lang-en"></span>
+        <span class="lang-sv"></span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Content: centered on mobile, left on desktop -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 pb-16 md:pb-24 -mt-2 md:mt-0 md:pt-32 w-full">
+    <div class="w-full md:w-1/3 md:ml-0 text-center md:text-left">
+      </div>
+
       <!-- Headline -->
-      <h1 class="hero-fade font-display font-black text-parchment leading-[1.05] mb-5" style="font-size: clamp(2.8rem, 6vw, 4.5rem);">
+      <h1 class="hero-fade font-display font-black text-white leading-[1.05] mb-3" style="font-size: clamp(3rem, 10vw, 4.5rem);">
         Amalthea<br/>Bokkafé
       </h1>
 
       <!-- One line — no-wrap to prevent layout shift on lang toggle -->
-      <p class="hero-fade hero-fade-delay-1 font-body italic text-cream/75 text-lg md:text-xl leading-relaxed mb-10 whitespace-nowrap">
-        <span class="lang-en">Radical bookstore and community café in Malmö.</span>
-        <span class="lang-sv">Radikalt bokkafé i Malmö.</span>
+      <p class="hero-fade hero-fade-delay-1 font-body italic text-white text-lg md:text-xl leading-relaxed mb-10 md:whitespace-nowrap">
+        <span class="lang-en block h-7">Radical bookstore and community café in Malmö.</span>
+        <span class="lang-sv block h-7">Radikalt bokkafé i Malmö.</span>
       </p>
 
       <!-- CTA -->
-      <div class="hero-fade hero-fade-delay-2 flex flex-wrap gap-4">
-        <a href={`${base}events/`} class="btn-fill font-heading font-semibold uppercase text-sm tracking-wider border-2 border-rust text-parchment bg-rust/90 px-6 py-3 inline-block transition-colors hover:bg-rust rounded-sm">
+      <div class="hero-fade hero-fade-delay-2 flex flex-wrap gap-4 justify-center md:justify-start">
+        <a href={`${base}events/`} class="btn-fill font-heading font-semibold uppercase text-sm tracking-wider border-2 border-rust text-white bg-rust/90 px-6 py-3 inline-block transition-colors hover:bg-rust rounded-sm">
           <span class="lang-en">Upcoming Events</span>
           <span class="lang-sv">Kommande event</span>
         </a>
-        <a href={`${base}about/`} class="font-heading font-semibold uppercase text-sm tracking-wider text-cream/70 px-6 py-3 inline-block hover:text-mustard transition-colors">
+        <a href={`${base}about/`} class="font-heading font-semibold uppercase text-sm tracking-wider text-white/90 px-6 py-3 inline-block hover:text-mustard transition-colors">
           <span class="lang-en">About Us →</span>
           <span class="lang-sv">Om oss →</span>
         </a>
@@ -63,3 +61,31 @@ const base = import.meta.env.BASE_URL;
 
   <div class="absolute bottom-0 left-0 right-0 accent-stripe"></div>
 </section>
+
+<script>
+  function updateOpenStatus() {
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const now = new Date();
+    const dayName = dayNames[now.getDay()];
+    
+    const hours = { 'Monday': null, 'Tuesday': '10:00–19:00', 'Wednesday': null, 'Thursday': '18:00–20:00', 'Friday': null, 'Saturday': '12:00–16:00', 'Sunday': '12:00–16:00' };
+    const isOpen = hours[dayName] !== null;
+    
+    const statusEl = document.getElementById('hero-open-status');
+    if (statusEl) {
+      const textEn = statusEl.querySelector('.lang-en');
+      const textSv = statusEl.querySelector('.lang-sv');
+      
+      if (isOpen) {
+        if (textEn) textEn.textContent = `Open · ${hours[dayName]}`;
+        if (textSv) textSv.textContent = `Öppet · ${hours[dayName]}`;
+      } else {
+        if (textEn) textEn.textContent = 'Closed today';
+        if (textSv) textSv.textContent = 'Stängt idag';
+      }
+    }
+  }
+
+  updateOpenStatus();
+  document.addEventListener('astro:after-swap', updateOpenStatus);
+</script>
