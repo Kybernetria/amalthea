@@ -29,7 +29,7 @@ const base = import.meta.env.BASE_URL;
     <link rel="icon" href={`${base}favicon.ico`} />
 
     <!-- Preload hero image -->
-    <link rel="preload" as="image" type="image/webp" href={`${base}Amaltheahero.webp`} />
+    <link rel="preload" as="image" href={`${base}heronew.png`} />
 
     <!-- Google Fonts — 3 families only -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,12 +38,12 @@ const base = import.meta.env.BASE_URL;
 
     <ClientRouter />
   </head>
-  <body class="paper-texture min-h-screen flex flex-col">
+  <body class="paper-texture min-h-screen flex flex-col w-full overflow-x-hidden">
 
-    <div transition:persist="navbar">
+    <div transition:persist="navbar" class="w-full">
       <Navbar />
     </div>
-    <main class="flex-1 relative z-10" transition:animate="none">
+    <main class="flex-1 relative z-10 w-full" transition:animate="none">
       <slot />
     </main>
     <Footer />
