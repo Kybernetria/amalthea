@@ -12,13 +12,13 @@ const dayNamesSv: Record<string, string> = {
     <div class="md:flex md:gap-16 md:items-start">
       <!-- Left: Address & Contact -->
       <div class="md:w-1/2 mb-10 md:mb-0">
-        <h2 class="font-display font-black text-espresso text-2xl md:text-3xl mb-2">
+        <h2 class="font-display font-black text-espresso text-3xl md:text-4xl mb-2">
           <span class="lang-en">Visit Us</span>
           <span class="lang-sv">Besök oss</span>
         </h2>
         <div class="w-16 h-1 bg-rust mb-6"></div>
 
-        <div class="space-y-3 font-heading text-sm tracking-wide">
+        <div class="space-y-3 font-heading text-base md:text-lg tracking-wide">
           <p class="text-espresso font-semibold">{siteConfig.address}</p>
           <a href={`mailto:${siteConfig.email}`} class="block text-driftwood hover:text-rust transition-colors">
             {siteConfig.email}
@@ -28,7 +28,7 @@ const dayNamesSv: Record<string, string> = {
         <!-- Social links -->
         <div class="flex gap-4 mt-6">
           {siteConfig.socials.instagram && (
-            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-driftwood hover:text-rust transition-colors font-heading text-xs uppercase tracking-wider">
+            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-driftwood hover:text-rust transition-colors font-heading text-sm md:text-base uppercase tracking-wider">
               Instagram
             </a>
           )}
@@ -37,13 +37,13 @@ const dayNamesSv: Record<string, string> = {
 
       <!-- Right: Hours Grid -->
       <div class="md:w-1/2">
-        <h3 class="font-heading font-semibold uppercase tracking-wider text-sm text-driftwood mb-4">
+        <h3 class="font-heading font-semibold uppercase tracking-wider text-base md:text-lg text-driftwood mb-4">
           <span class="lang-en">Opening Hours</span>
           <span class="lang-sv">Öppettider</span>
         </h3>
         <div class="space-y-2">
           {siteConfig.hours.map((h: any) => (
-            <div class="flex justify-between font-heading text-sm border-b border-driftwood/10 pb-2">
+            <div class="flex justify-between font-heading text-base md:text-lg border-b border-driftwood/10 pb-2">
               <span class="text-driftwood">
                 <span class="lang-en">{h.day}</span>
                 <span class="lang-sv">{dayNamesSv[h.day] || h.day}</span>
