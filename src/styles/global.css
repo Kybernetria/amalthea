@@ -193,8 +193,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-menu-btn.active .hamburger-top {
-  transform: rotate(35deg);
-  width: 1.25rem;
+  transform: rotate(50deg);
+  width: 1.4rem;
 }
 
 /* Middle line: crossbar of A */
@@ -203,7 +203,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-menu-btn.active .hamburger-mid {
-  transform: translateY(2px);
+  transform: translateY(4px);
   width: 1rem;
 }
 
@@ -213,8 +213,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-menu-btn.active .hamburger-bot {
-  transform: rotate(-35deg);
-  width: 1.25rem;
+  transform: rotate(-50deg);
+  width: 1.4rem;
 }
 
 /* Collapse gap between lines when active */
