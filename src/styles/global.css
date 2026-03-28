@@ -184,24 +184,42 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hamburger to A animation */
 #mobile-menu-btn .hamburger-a-line {
-  transform-origin: center;
   position: relative;
 }
 
+/* Top line: becomes left leg \ of A */
+#mobile-menu-btn .hamburger-top {
+  transform-origin: right center;
+}
+
 #mobile-menu-btn.active .hamburger-top {
-  transform: rotate(45deg) translateY(6px);
-  width: 1.5rem;
+  transform: rotate(-40deg);
+  width: 1.25rem;
+}
+
+/* Middle line: crossbar of A */
+#mobile-menu-btn .hamburger-mid {
+  transform-origin: center center;
 }
 
 #mobile-menu-btn.active .hamburger-mid {
-  opacity: 0;
-  transform: scaleX(0);
-  width: 0;
+  transform: translateY(2px);
+  width: 1rem;
+}
+
+/* Bottom line: becomes right leg / of A */
+#mobile-menu-btn .hamburger-bot {
+  transform-origin: left center;
 }
 
 #mobile-menu-btn.active .hamburger-bot {
-  transform: rotate(-45deg) translateY(-6px);
-  width: 1.5rem;
+  transform: rotate(40deg);
+  width: 1.25rem;
+}
+
+/* Collapse gap between lines when active */
+#mobile-menu-btn.active {
+  gap: 0;
 }
 
 /* Event type colors */
