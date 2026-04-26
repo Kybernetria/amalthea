@@ -20,7 +20,7 @@ const navLinks = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-cream/90 border-b border-driftwood/15" id="main-nav">
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-cream/90 border-b border-driftwood/15" id="main-nav" data-hours={JSON.stringify(siteConfig.hours)}>
   <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-18">
     <!-- Logo -->
     <a href={base} class="flex items-center">
@@ -48,8 +48,8 @@ const navLinks = [
       <!-- Hours pill — hover to expand -->
       <div class="relative group">
         <div class="font-heading text-xs text-espresso bg-bone border border-driftwood/20 px-3 py-1.5 rounded-sm tracking-wide cursor-default">
-          <span class="lang-en">{todayStatusEn}</span>
-          <span class="lang-sv">{todayStatusSv}</span>
+          <span class="lang-en" id="nav-status-en">{todayStatusEn}</span>
+          <span class="lang-sv" id="nav-status-sv">{todayStatusSv}</span>
         </div>
 
         <!-- Hours popover — shows on hover -->
@@ -114,8 +114,8 @@ const navLinks = [
     ))}
     <div class="mt-6 font-heading text-lg text-espresso text-center space-y-3 tracking-wide">
       <p>
-        <span class="lang-en">{todayStatusEn}</span>
-        <span class="lang-sv">{todayStatusSv}</span>
+        <span class="lang-en" id="mobile-status-en">{todayStatusEn}</span>
+        <span class="lang-sv" id="mobile-status-sv">{todayStatusSv}</span>
       </p>
       <p class="text-xs">{siteConfig.address}</p>
     </div>
@@ -137,6 +137,39 @@ const navLinks = [
 
   document.getElementById('lang-toggle')?.addEventListener('click', toggleLang);
   document.getElementById('lang-toggle-mobile')?.addEventListener('click', toggleLang);
+
+  // Open Status Update (Client Side)
+  function updateNavOpenStatus() {
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+    const hoursData = JSON.parse(nav.getAttribute('data-hours') || '[]');
+    
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const today = dayNames[new Date().getDay()];
+    const todayConfig = hoursData.find((h: any) => h.day === today);
+    
+    let enText = 'Closed today';
+    let svText = 'Stängt idag';
+    
+    if (todayConfig && todayConfig.status === 'open') {
+      const note = todayConfig.note ? ` · ${todayConfig.note}` : '';
+      enText = `Open · ${todayConfig.hours}${note}`;
+      svText = `Öppet · ${todayConfig.hours}${note}`;
+    }
+    
+    const deskEn = document.getElementById('nav-status-en');
+    const deskSv = document.getElementById('nav-status-sv');
+    if (deskEn) deskEn.textContent = enText;
+    if (deskSv) deskSv.textContent = svText;
+
+    const mobEn = document.getElementById('mobile-status-en');
+    const mobSv = document.getElementById('mobile-status-sv');
+    if (mobEn) mobEn.textContent = enText;
+    if (mobSv) mobSv.textContent = svText;
+  }
+  
+  updateNavOpenStatus();
+  document.addEventListener('astro:after-swap', updateNavOpenStatus);
 
   // Mobile menu
   const menuBtn = document.getElementById('mobile-menu-btn');
