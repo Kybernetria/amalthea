@@ -1,9 +1,9 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-import '../styles/global.css';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import siteConfig from '../../site-config.json';
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import siteConfig from "../../site-config.json";
 
 interface Props {
   title?: string;
@@ -16,7 +16,7 @@ const pageDescription = description || siteConfig.tagline;
 const base = import.meta.env.BASE_URL;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-lang="en">
   <head>
     <meta charset="utf-8" />
@@ -25,8 +25,8 @@ const base = import.meta.env.BASE_URL;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
 
-    <link rel="icon" type="image/png" href={`${base}flower.png`} />
-    <link rel="apple-touch-icon" href={`${base}flower.png`} />
+    <link rel="icon" type="image/png" href={`${base}heronew1.png`} />
+    <link rel="apple-touch-icon" href={`${base}heronew1.png`} />
 
     <!-- Preload hero image -->
     <link rel="preload" as="image" href={`${base}storefront.jpg`} />
@@ -34,12 +34,16 @@ const base = import.meta.env.BASE_URL;
     <!-- Google Fonts — 3 families only -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <ClientRouter />
   </head>
-  <body class="paper-texture min-h-screen flex flex-col w-full overflow-x-hidden">
-
+  <body
+    class="paper-texture min-h-screen flex flex-col w-full overflow-x-hidden"
+  >
     <div transition:persist="navbar" class="w-full">
       <Navbar />
     </div>
@@ -51,14 +55,14 @@ const base = import.meta.env.BASE_URL;
     <script is:inline>
       // Language toggle persistence — runs on initial load and after view transitions
       function applyLang() {
-        const savedLang = localStorage.getItem('amalthea-lang') || 'en';
-        document.documentElement.setAttribute('data-lang', savedLang);
+        const savedLang = localStorage.getItem("amalthea-lang") || "en";
+        document.documentElement.setAttribute("data-lang", savedLang);
       }
       applyLang();
-      document.addEventListener('astro:after-swap', applyLang);
+      document.addEventListener("astro:after-swap", applyLang);
 
       // Scroll to top on every navigation
-      document.addEventListener('astro:after-swap', () => {
+      document.addEventListener("astro:after-swap", () => {
         window.scrollTo(0, 0);
       });
     </script>
