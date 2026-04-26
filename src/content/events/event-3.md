@@ -11,7 +11,7 @@ tags:
   - labor
   - documentary
 excerpt: Barbara Kopple's Academy Award-winning documentary about the coal miners' strike in Harlan County, Kentucky. Discussion to follow.
-image: /images/Amaltheahero1.jpg
+image: ''
 draft: false
 recurrencePattern: ''
 ---
