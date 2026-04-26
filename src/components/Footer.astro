@@ -8,59 +8,34 @@ const currentYear = new Date().getFullYear();
 <footer class="bg-charcoal text-cream relative z-10 w-full">
   <div class="accent-stripe"></div>
 
-  <div class="max-w-7xl mx-auto px-6 py-10 md:py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+  <div class="max-w-4xl mx-auto px-6 py-12 md:py-16">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
 
-      <!-- Col 1: Identity + Support -->
-      <div>
-
-        <!-- Swish -->
-        <div class="bg-cream/5 border border-cream/10 rounded-sm p-3 inline-block">
-          <p class="font-heading text-sm md:text-base text-cream/50 mb-1">
-            <span class="lang-en">🚩 Support Amalthea</span>
-            <span class="lang-sv">🚩 Stötta Amalthea</span>
-          </p>
-          <p class="font-heading text-base md:text-lg text-mustard">Swish {siteConfig.swish}</p>
+      <!-- Contact -->
+      <div class="text-center md:text-left">
+        <h4 class="font-heading font-semibold uppercase tracking-wider text-sm text-cream/40 mb-3">
+          <span class="lang-en">Contact</span>
+          <span class="lang-sv">Kontakt</span>
+        </h4>
+        <a href={`mailto:${siteConfig.email}`} class="block font-heading text-xl md:text-2xl text-cream/80 hover:text-mustard transition-colors mb-4 tracking-wide">
+          {siteConfig.email}
+        </a>
+        <div class="flex justify-center md:justify-start gap-4">
+          {siteConfig.socials.instagram && (
+            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Instagram">
+              <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
+            </a>
+          )}
         </div>
       </div>
 
-      <!-- Col 2: Navigation + Contact -->
-      <div class="md:flex md:gap-10">
-        <div class="mb-6 md:mb-0">
-          <h4 class="font-heading font-semibold uppercase tracking-wider text-base md:text-lg text-cream/40 mb-4">
-            <span class="lang-en">Navigate</span>
-            <span class="lang-sv">Navigera</span>
-          </h4>
-          <nav class="space-y-2.5">
-            {[
-              { en: 'Events', sv: 'Evenemang', href: `${base}events/` },
-              { en: 'Writing', sv: 'Texter', href: `${base}writing/` },
-              { en: 'About', sv: 'Om oss', href: `${base}about/` },
-            ].map(link => (
-              <a href={link.href} class="block font-heading text-base md:text-lg text-cream/60 hover:text-mustard transition-colors tracking-wide">
-                <span class="lang-en">{link.en}</span>
-                <span class="lang-sv">{link.sv}</span>
-              </a>
-            ))}
-          </nav>
-        </div>
-
-        <div>
-          <h4 class="font-heading font-semibold uppercase tracking-wider text-base md:text-lg text-cream/40 mb-4">
-            <span class="lang-en">Contact</span>
-            <span class="lang-sv">Kontakt</span>
-          </h4>
-          <a href={`mailto:${siteConfig.email}`} class="block font-heading text-base md:text-lg text-cream/60 hover:text-mustard transition-colors mb-4 tracking-wide">
-            {siteConfig.email}
-          </a>
-          <div class="flex gap-4">
-            {siteConfig.socials.instagram && (
-              <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Instagram">
-                <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
-              </a>
-            )}
-          </div>
-        </div>
+      <!-- Swish -->
+      <div class="bg-cream/5 border border-cream/10 rounded-lg p-6 md:p-8 text-center">
+        <p class="font-heading text-sm md:text-base text-cream/50 mb-2 tracking-wider">
+          <span class="lang-en">🚩 Support Amalthea</span>
+          <span class="lang-sv">🚩 Stötta Amalthea</span>
+        </p>
+        <p class="font-heading text-2xl md:text-3xl text-mustard tracking-wide">Swish {siteConfig.swish}</p>
       </div>
 
     </div>
