@@ -13,9 +13,12 @@ const currentYear = new Date().getFullYear();
 
       <!-- Col 1: Identity + Support -->
       <div>
-        <h3 class="font-display font-black text-cream text-3xl md:text-4xl mb-2">
-          {siteConfig.name}
-        </h3>
+        <div class="flex items-center gap-4 mb-2">
+          <img src={`${base}heronew1.png`} alt="" class="w-12 h-12 rounded-full" aria-hidden="true" />
+          <h3 class="font-display font-black text-cream text-3xl md:text-4xl">
+            {siteConfig.name}
+          </h3>
+        </div>
         <p class="font-heading text-sm md:text-base text-mustard uppercase tracking-wider mb-4">
           <span class="lang-en">{siteConfig.taglineEn || 'Radical bookstore in Malmö'}</span>
           <span class="lang-sv">{siteConfig.tagline}</span>
