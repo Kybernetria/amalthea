@@ -1,14 +1,19 @@
 ---
-title: "Film Screening: 'Harlan County, USA'" # <!-- PLACEHOLDER -->
+title: "Film Screening: 'Harlan County, USA'"
 date: 2026-04-05
-startTime: "18:30"
-endTime: "21:00"
-location: "Main Floor"
-organizer: "Film Club" # <!-- PLACEHOLDER -->
-eventType: "film"
-tags: ["film", "labor", "documentary"]
-excerpt: "Barbara Kopple's Academy Award-winning documentary about the coal miners' strike in Harlan County, Kentucky. Discussion to follow." # <!-- PLACEHOLDER -->
+startTime: 18:30
+endTime: 21:00
+location: Main Floor
+organizer: Film Club
+eventType: film
+tags:
+  - film
+  - labor
+  - documentary
+excerpt: Barbara Kopple's Academy Award-winning documentary about the coal miners' strike in Harlan County, Kentucky. Discussion to follow.
+image: /images/Amaltheahero1.jpg
 draft: false
+recurrencePattern: ''
 ---
 
 <!-- PLACEHOLDER: Replace all body content below -->
@@ -17,7 +22,7 @@ We're screening Barbara Kopple's 1976 masterpiece about the Brookside Strike —
 
 ## About the Film
 
-*Harlan County, USA* follows the coal miners of Harlan County, Kentucky as they go on strike against the Duke Power Company. Kopple embedded herself with the miners and their families for over a year, capturing the violence, solidarity, and courage of the struggle.
+_Harlan County, USA_ follows the coal miners of Harlan County, Kentucky as they go on strike against the Duke Power Company. Kopple embedded herself with the miners and their families for over a year, capturing the violence, solidarity, and courage of the struggle.
 
 Winner of the Academy Award for Best Documentary Feature, 1977.
 
