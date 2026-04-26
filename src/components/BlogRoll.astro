@@ -11,11 +11,15 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   <div class="max-w-7xl mx-auto px-6">
     <!-- Section header -->
     <div class="mb-12">
-      <h2 class="font-display font-black text-espresso text-3xl md:text-4xl inline-block">
-        <span class="lang-en">From the Shelf</span>
-        <span class="lang-sv">Från hyllan</span>
-      </h2>
-      <div class="w-full h-1 bg-rust"></div>
+    <div class="mb-12">
+      <div class="inline-block">
+        <h2 class="font-display font-black text-espresso text-3xl md:text-4xl mb-2">
+          <span class="lang-en">From the Shelf</span>
+          <span class="lang-sv">Från hyllan</span>
+        </h2>
+        <div class="w-full h-1 bg-rust"></div>
+      </div>
+    </div>
     </div>
 
     <!-- Posts grid -->

@@ -14,11 +14,13 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
         <span class="lang-en">Blog</span>
         <span class="lang-sv">Blogg</span>
       </p>
-      <h1 class="font-display font-black text-espresso text-3xl md:text-4xl mb-4">
-        <span class="lang-en">From the Shelf</span>
-        <span class="lang-sv">Från hyllan</span>
-      </h1>
-      <div class="w-full h-1 bg-rust"></div>
+      <div class="inline-block mb-4">
+        <h1 class="font-display font-black text-espresso text-3xl md:text-4xl mb-2">
+          <span class="lang-en">From the Shelf</span>
+          <span class="lang-sv">Från hyllan</span>
+        </h1>
+        <div class="w-full h-1 bg-rust"></div>
+      </div>
     </header>
 
     <!-- Posts -->
