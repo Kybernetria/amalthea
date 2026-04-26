@@ -65,7 +65,11 @@ const typeColor = eventTypeColors[frontmatter.eventType] || 'bg-espresso';
         <!-- Event image -->
         {frontmatter.image && (
           <div class="frame-photo mb-10 overflow-hidden rounded-lg">
-            <img src={frontmatter.image} alt="" class="w-full photo-grain" />
+            <img 
+              src={frontmatter.image.startsWith('http') ? frontmatter.image : `${base}${frontmatter.image.startsWith('/') ? frontmatter.image.slice(1) : frontmatter.image}`} 
+              alt="" 
+              class="w-full photo-grain" 
+            />
           </div>
         )}
 

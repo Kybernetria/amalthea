@@ -48,7 +48,11 @@ const eventTypeColors: Record<string, string> = {
                 {/* Event image */}
                 {event.data.image && (
                   <div class="mb-4 -mx-6 md:-mx-8 -mt-6 md:-mt-8">
-                    <img src={event.data.image} alt="" class="w-full h-40 object-cover photo-grain" />
+                    <img 
+                      src={event.data.image.startsWith('http') ? event.data.image : `${base}${event.data.image.startsWith('/') ? event.data.image.slice(1) : event.data.image}`} 
+                      alt="" 
+                      class="w-full h-48 object-cover photo-grain" 
+                    />
                   </div>
                 )}
                 <!-- Date -->

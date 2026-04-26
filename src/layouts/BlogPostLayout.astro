@@ -40,7 +40,11 @@ const dateStr = new Date(frontmatter.date).toLocaleDateString('en-US', {
     <!-- Hero image -->
     {frontmatter.heroImage && (
       <div class="frame-photo mb-12 overflow-hidden rounded-lg">
-        <img src={frontmatter.heroImage} alt="" class="w-full photo-grain" />
+        <img 
+          src={frontmatter.heroImage.startsWith('http') ? frontmatter.heroImage : `${base}${frontmatter.heroImage.startsWith('/') ? frontmatter.heroImage.slice(1) : frontmatter.heroImage}`} 
+          alt="" 
+          class="w-full photo-grain" 
+        />
       </div>
     )}
 
