@@ -64,11 +64,11 @@ const typeColor = eventTypeColors[frontmatter.eventType] || 'bg-espresso';
 
         <!-- Event image -->
         {frontmatter.image && (
-          <div class="frame-photo mb-10 overflow-hidden rounded-lg">
+          <div class="frame-photo mb-10 overflow-hidden rounded-lg bg-charcoal/5 flex items-center justify-center">
             <img 
               src={frontmatter.image.startsWith('http') ? frontmatter.image : `${base}${frontmatter.image.startsWith('/') ? frontmatter.image.slice(1) : frontmatter.image}`} 
               alt="" 
-              class="w-full photo-grain" 
+              class="max-w-full max-h-[600px] w-auto h-auto object-contain photo-grain" 
             />
           </div>
         )}
