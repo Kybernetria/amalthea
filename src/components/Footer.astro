@@ -17,16 +17,16 @@ const currentYear = new Date().getFullYear();
           <span class="lang-en">Contact</span>
           <span class="lang-sv">Kontakt</span>
         </h4>
-        <a href={`mailto:${siteConfig.email}`} class="block font-heading text-xl md:text-2xl text-cream/80 hover:text-mustard transition-colors mb-4 tracking-wide">
-          {siteConfig.email}
-        </a>
-        <div class="flex justify-center md:justify-start gap-4">
+        <div class="flex justify-center md:justify-start gap-4 mb-3">
           {siteConfig.socials.instagram && (
             <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" class="text-cream/40 hover:text-mustard transition-colors" aria-label="Instagram">
-              <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
+              <svg class="w-8 h-8 md:w-9 md:h-9" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
             </a>
           )}
         </div>
+        <a href={`mailto:${siteConfig.email}`} class="block font-heading text-xl md:text-2xl text-cream/80 hover:text-mustard transition-colors tracking-wide">
+          {siteConfig.email}
+        </a>
       </div>
 
       <!-- Swish -->
