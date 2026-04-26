@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import siteConfig from '../../site-config.json';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="About">
@@ -19,7 +21,10 @@ import siteConfig from '../../site-config.json';
         <span class="lang-en">Radical bookstore and community café in Malmö.</span>
         <span class="lang-sv">Radikalt bokkafé i Malmö.</span>
       </p>
-      <div class="w-24 h-1 bg-rust"></div>
+      <div class="flex items-center gap-4">
+        <div class="w-24 h-1 bg-rust"></div>
+        <img src={`${base}flower.png`} alt="" class="w-16 h-16 opacity-50 ml-4" aria-hidden="true" />
+      </div>
     </header>
 
     <!-- Our Story -->
@@ -56,7 +61,9 @@ import siteConfig from '../../site-config.json';
         <span class="lang-en">The Space</span>
         <span class="lang-sv">Rummet</span>
       </h2>
-      <div class="w-16 h-1 bg-rust mb-6"></div>
+      <div class="flex items-center gap-2 mb-6">
+        <div class="w-16 h-1 bg-rust"></div>
+      </div>
       <div class="font-body text-driftwood leading-relaxed space-y-4 text-base">
         <div class="lang-en">
           <p>

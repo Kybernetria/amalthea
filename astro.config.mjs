@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://kybernetria.codeberg.page/amalthea',
-  base: '/amalthea/',
+  site: 'https://kybernetria.github.io/Amalthea',
+  base: '/Amalthea/',
   integrations: [tailwind()],
 });

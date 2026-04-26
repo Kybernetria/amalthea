@@ -69,9 +69,6 @@ const currentYear = new Date().getFullYear();
                 <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.5"></circle></svg>
               </a>
             )}
-            <a href={`mailto:${siteConfig.email}`} class="text-cream/40 hover:text-mustard transition-colors" aria-label="Email">
-              <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 7l-10 7L2 7"></path></svg>
-            </a>
           </div>
         </div>
       </div>
@@ -86,10 +83,13 @@ const currentYear = new Date().getFullYear();
       <p class="font-heading text-sm md:text-base text-cream/25 tracking-wide">
         © {currentYear} {siteConfig.name} · CC BY-SA 4.0
       </p>
-      <span class="font-heading text-sm md:text-base text-cream/25 uppercase tracking-widest">
-        <span class="lang-en">Solidarity every day</span>
-        <span class="lang-sv">Solidaritet varje dag</span>
-      </span>
+      <div class="flex items-center gap-3">
+        <img src={`${base}flower.png`} alt="" class="w-8 h-8 opacity-30 hover:opacity-60 transition-opacity duration-300" aria-hidden="true" />
+        <span class="font-heading text-sm md:text-base text-cream/25 uppercase tracking-widest">
+          <span class="lang-en">Solidarity every day</span>
+          <span class="lang-sv">Solidaritet varje dag</span>
+        </span>
+      </div>
     </div>
   </div>
 </footer>
