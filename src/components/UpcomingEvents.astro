@@ -29,10 +29,13 @@ const eventTypeColors: Record<string, string> = {
       <!-- Left label -->
       <div class="lg:w-[200px] flex-shrink-0 mb-10 lg:mb-0 lg:relative">
         <div class="lg:sticky lg:top-28">
-          <h2 class="font-display font-black text-espresso text-4xl md:text-5xl lg:text-6xl lg:[writing-mode:vertical-lr] lg:rotate-180 leading-none tracking-tight">
-            <span class="lang-en">Upcoming</span>
-            <span class="lang-sv">Kommande</span>
-          </h2>
+          <div class="inline-block lg:block">
+            <h2 class="font-display font-black text-espresso text-4xl md:text-5xl lg:text-6xl lg:[writing-mode:vertical-lr] lg:rotate-180 leading-none tracking-tight">
+              <span class="lang-en">Upcoming</span>
+              <span class="lang-sv">Kommande</span>
+            </h2>
+            <div class="w-full h-1 bg-rust mt-2 lg:hidden"></div>
+          </div>
         </div>
       </div>
 
