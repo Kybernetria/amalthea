@@ -1,0 +1,70 @@
+backend:
+  name: github
+  repo: Kybernetria/amalthea
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: blog
+    label: Blog Posts
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Hero Image, name: heroImage, widget: image, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: events
+    label: Events
+    folder: src/content/events
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - { label: Start Time, name: startTime, widget: string }
+      - { label: End Time, name: endTime, widget: string, required: false }
+      - { label: Location, name: location, widget: string, default: "Main Floor" }
+      - { label: Organizer, name: organizer, widget: string, required: false }
+      - { label: Event Type, name: eventType, widget: select, options: ["reading", "workshop", "discussion", "film", "meeting", "other"], default: "other" }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Event Image, name: image, widget: image, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Is Recurring, name: isRecurring, widget: boolean, default: false }
+      - { label: Recurrence Pattern, name: recurrencePattern, widget: string, required: false, hint: "e.g., every third thursday" }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: config
+    label: Site Settings
+    files:
+      - name: general
+        label: General Settings
+        file: site-config.json
+        fields:
+          - { label: Site Name, name: name, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Address, name: address, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: Phone, name: phone, widget: string }
+          - label: Opening Hours
+            name: hours
+            widget: list
+            fields:
+              - { label: Day, name: day, widget: string }
+              - { label: Status, name: status, widget: select, options: ["open", "closed"] }
+              - { label: Hours, name: hours, widget: string, required: false }
+          - label: Social Links
+            name: socials
+            widget: object
+            fields:
+              - { label: Instagram, name: instagram, widget: string, required: false }
+              - { label: Mastodon, name: mastodon, widget: string, required: false }
+              - { label: Email, name: email, widget: string }
