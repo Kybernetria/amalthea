@@ -112,6 +112,19 @@ const eventsJson = allEvents.map(e => ({
       film: '#2D2926', meeting: '#5C524A', other: '#1E1A17',
     };
 
+    // Calendar cells are assembled as HTML so the existing desktop interaction and
+    // layout stay unchanged. Escape content before inserting it into that HTML.
+    function escapeHtml(value: string) {
+      const entities: Record<string, string> = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      };
+      return value.replace(/[&<>"']/g, (character) => entities[character] || character);
+    }
+
     const weekdaysEn = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const weekdaysSv = ['Mån', 'Tis', 'Ons', 'Tor', 'Fre', 'Lör', 'Sön'];
 
@@ -168,7 +181,8 @@ const eventsJson = allEvents.map(e => ({
         let eventsHtml = '';
         for (const ev of dayEvents) {
           const color = typeColors[ev.eventType] || '#1E1A17';
-          eventsHtml += `<a href="${base}events/${ev.id}/" class="block mt-1.5"><div class="text-xs font-heading px-2 py-1 rounded-sm leading-tight hover:opacity-80 transition-opacity" style="background:${color};color:#F2E8D5;">${ev.title}</div></a>`;
+          const eventHref = `${base}events/${ev.id}/`;
+          eventsHtml += `<a href="${escapeHtml(eventHref)}" class="block mt-1.5"><div class="text-xs font-heading px-2 py-1 rounded-sm leading-tight hover:opacity-80 transition-opacity" style="background:${color};color:#F2E8D5;">${escapeHtml(ev.title)}</div></a>`;
         }
 
         html += `<div class="${cellClass}"><span class="${numClass}">${d}</span>${eventsHtml}</div>`;

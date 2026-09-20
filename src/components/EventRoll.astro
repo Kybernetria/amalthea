@@ -20,13 +20,18 @@ const eventTypeColors: Record<string, string> = {
     const d = new Date(event.data.date);
     const dayStr = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
     const typeColor = eventTypeColors[event.data.eventType] || 'bg-espresso';
+    const imageSrc = event.data.image
+      ? (/^https?:\/\//i.test(event.data.image)
+        ? event.data.image
+        : `${base}${event.data.image.startsWith('/') ? event.data.image.slice(1) : event.data.image}`)
+      : undefined;
     return (
       <a href={`${base}events/${event.id}/`} class="block group">
         <article class="bg-parchment rounded-lg border-l-4 border-l-rust p-6 h-full flex flex-col card-lift relative overflow-hidden">
           {/* Event image */}
-          {event.data.image && (
+          {imageSrc && (
             <div class="mb-4 -mx-6 -mt-6">
-              <img src={event.data.image} alt="" class="w-full h-36 object-cover photo-grain" />
+              <img src={imageSrc} alt="" class="w-full h-36 object-cover photo-grain" />
             </div>
           )}
           {/* Date */}
